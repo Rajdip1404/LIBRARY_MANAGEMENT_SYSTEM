@@ -8,6 +8,15 @@ class ErrorHandler extends Error {
   }
 }
 
+// utils/errorResponse.js
+export const errorResponse = (res, statusCode, message) => {
+  return res.status(statusCode).json({
+    success: false,
+    message,
+  });
+};
+
+
 export const errorHandler = (err, req, res, next) => {
   let statusCode = err.statusCode || 500;
   let message = err.message || "Internal Server Error";
@@ -32,7 +41,7 @@ export const errorHandler = (err, req, res, next) => {
   // 🛑 Handle Mongoose CastError (Invalid MongoDB Object ID)
   if (err.name === "CastError") {
     statusCode = 400;
-    message = `Invalid ${err.path}: ${err.value}. Resource not found.`;
+    message = `Invalid id. Resource not found.`;
   }
 
   // 🛑 Handle Mongoose Validation Errors

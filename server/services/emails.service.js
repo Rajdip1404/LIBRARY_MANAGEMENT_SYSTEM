@@ -64,3 +64,27 @@ export const sendSuccessResetPasswordEmail = async (email) => {
     console.log("Error sending reset password email:", error.message);
   }
 };
+
+export const sendDueDateReminderEmail = async (email, dueDate, bookTitle) => {
+  const recipient = [{ email }];
+  const subject = "Reminder: Book Due Date Tomorrow";
+
+  // Format the due date to a more user-friendly format (e.g., March 10, 2025)
+  const formattedDueDate = new Date(dueDate).toLocaleDateString();
+
+  // Create the HTML content for the reminder email
+  const html = DUE_DATE_REMINDER_EMAIL_TEMPLATE.replace(
+    "{bookTitle}",
+    bookTitle
+  ).replace("{dueDate}", formattedDueDate);
+
+  const category = "Book Due Date Reminder";
+
+  try {
+    // Send the reminder email
+    await sendEmail(recipient[0].email, category, subject, html);
+  } catch (error) {
+    console.log("Error sending due date reminder email:", error.message);
+  }
+};
+

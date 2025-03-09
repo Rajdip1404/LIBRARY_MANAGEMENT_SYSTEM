@@ -131,5 +131,31 @@ export const WELCOME_EMAIL_TEMPLATE = `
 </html>
 `;
 
+export const DUE_DATE_REMINDER_EMAIL_TEMPLATE = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Due Date Reminder</title>
+</head>
+<body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f3e5f5;">
+  <div style="background: linear-gradient(to right, #d32f2f, #c2185b); padding: 25px; text-align: center; border-radius: 10px 10px 0 0;">
+    <h1 style="color: white; margin: 0; font-size: 24px;">Reminder: Book Due Date Tomorrow</h1>
+  </div>
+  <div style="background-color: #ffffff; padding: 25px; border-radius: 0 0 10px 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+    <p style="font-size: 16px; color: #555;">Hello,</p>
+    <p style="font-size: 16px;">This is a friendly reminder that your book, <strong>{bookTitle}</strong>, is due for return tomorrow, <strong>{dueDate}</strong>.</p>
+    <p style="font-size: 16px;">Please return the book on time to avoid any late fees. If you are unable to return the book on time, please contact us for assistance.</p>
+    <p style="font-size: 16px;">Thank you for using our library services!</p>
+    <p style="font-size: 14px; color: #777;">If you didn't borrow this book, please ignore this email or contact us immediately.</p>
+    <p style="font-size: 16px; color: #555;">Best regards,<br><strong>Your Library Team</strong></p>
+  </div>
+  <div style="text-align: center; margin-top: 20px; color: #888; font-size: 12px;">
+    <p>This is an automated message. Please do not reply.</p>
+  </div>
+</body>
+</html>
+`;
 
 // style="text-align: center; margin-top: 20px; color: #888; font-size: 0.8em;

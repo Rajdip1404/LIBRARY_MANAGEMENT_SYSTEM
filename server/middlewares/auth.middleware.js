@@ -40,3 +40,14 @@ export const isAuthenticated = catchAsyncErrors(async (req, res, next) => {
     });
   }
 });
+
+export const isAdmin = catchAsyncErrors(async (req, res, next) => {
+  if (req.user.role !== "Admin") {
+    return res.status(403).json({
+      success: false,
+      message: "Access denied, only admin can access this route",
+    });
+  }
+
+  next();
+});

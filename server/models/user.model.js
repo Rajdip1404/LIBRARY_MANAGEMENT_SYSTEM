@@ -84,7 +84,6 @@ userSchema.methods.generateJWT = function (res) {
   return token;
 };
 
-
 userSchema.methods.generateResetPasswordToken = async function () {
   const resetToken = crypto.randomBytes(20).toString("hex");
   this.resetPasswordToken = crypto
