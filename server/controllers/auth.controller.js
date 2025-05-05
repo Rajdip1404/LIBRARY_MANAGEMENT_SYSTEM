@@ -2,7 +2,7 @@ import ErrorHandler from "../middlewares/error.middleware.js";
 import { catchAsyncErrors } from "../middlewares/catchAsyncErrors.middleware.js";
 import User from "../models/user.model.js";
 import bcrypt from "bcrypt";
-import crypto from "crypto";
+import crypto from "crypto"; 
 import {
   sendVerificationEmail,
   sendWelcomeEmail,
@@ -31,15 +31,16 @@ export const register = catchAsyncErrors(async (req, res, next) => {
     // 🛑 Delete any existing unverified user with this email before creating a new one
     await User.deleteOne({
       email,
-      accountVerified: false,
+      accountVerified: false,              
       verificationCodeExpire: { $lt: Date.now() },
     });
 
     const registeredButNotVerified = await User.findOne({
       email,
       accountVerified: false,
+      verificationCodeExpire: { $gt: Date.now() },
     });
-    
+        
     if (registeredButNotVerified ) {
       return next(
         new ErrorHandler(
@@ -76,7 +77,7 @@ export const verifyEmail = catchAsyncErrors(async (req, res, next) => {
   }
 
   try {
-    const user = await User.findOne({
+    const user = await User.findOne({                    
       email,
       accountVerified: false,
       verificationCode,
@@ -91,7 +92,7 @@ export const verifyEmail = catchAsyncErrors(async (req, res, next) => {
     user.verificationCode = undefined;
     user.verificationCodeExpire = undefined;
 
-    await user.save();
+    await user.save({validateModifiedOnly: true});      
 
     const token = user.generateJWT(res);
     await sendWelcomeEmail(email, user.name);
@@ -238,7 +239,8 @@ export const resetPassword = catchAsyncErrors(async (req, res, next) => {
     await sendSuccessResetPasswordEmail(user.email, user.name);
     res.status(200).json({
       success: true,
-      message: "Password reset successfully",
+      message: "Password reset successful",
+      token
     })
   } catch (error) {
     return next(new ErrorHandler(error.message, 400));

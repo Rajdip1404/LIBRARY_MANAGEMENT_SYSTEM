@@ -18,9 +18,10 @@ const authSlice = createSlice({
       state.message = null;
     },
     registerSuccess: (state, action) => {
+      console.log("Register Success Payload:", action.payload); // Check API response
       state.loading = false;
       state.error = null;
-      state.message = action.payload.message;
+      state.message = action.payload?.message || "Registration successful"; // Ensure message exists
     },
     registerFailure: (state, action) => {
       state.loading = false;
@@ -39,7 +40,7 @@ const authSlice = createSlice({
       state.user = action.payload;
       state.isAuthenticated = true;
       state.error = null;
-      state.message = action.payload.message;
+      state.message = action.payload.message || "Account verified successfully";
     },
     emailVerificationFailure: (state, action) => {
       state.loading = false;
@@ -184,7 +185,7 @@ export const register = (data) => async (dispatch) => {
   }
 };
 
-export const emailVerfication =
+export const emailVerification =
   (email, verificationCode) => async (dispatch) => {
     dispatch(authSlice.actions.emailVerificationRequest());
     try {
@@ -198,10 +199,14 @@ export const emailVerfication =
           },
         }
       );
+      console.log("Email Verification Success:", response.data); // Debugging log
       dispatch(authSlice.actions.emailVerificationSuccess(response.data));
     } catch (error) {
+      console.error("Email Verification Error:", error); // Debugging log
       dispatch(
-        authSlice.actions.emailVerificationFailure(error.response.data.message)
+        authSlice.actions.emailVerificationFailure(
+          error.response?.data?.message || "An error occurred"
+        )
       );
     }
   };

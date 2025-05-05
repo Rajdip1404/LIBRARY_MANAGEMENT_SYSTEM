@@ -29,12 +29,16 @@ const Register = () => {
   };
 
   useEffect(() => {
-    if (message) navigateTo(`/verify-email/${email}`);
+    if (message) {
+      toast.success(message);
+      navigateTo(`/verify-email/${email}`);
+      dispatch(resetAuthSlice());
+    }
     if (error) {
       toast.error(error);
       dispatch(resetAuthSlice());
     }
-  }, [dispatch, isAuthenticated, error, loading]);
+  }, [dispatch, message, error, navigateTo, email]);
 
   if (isAuthenticated) return <Navigate to={"/"} />;
 
@@ -91,7 +95,7 @@ const Register = () => {
               </div>
               <div className="mb-2">
                 <input
-                  type="text"
+                  type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Email"
@@ -100,7 +104,7 @@ const Register = () => {
               </div>
               <div className="mb-2">
                 <input
-                  type="text"
+                  type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Password"
@@ -109,11 +113,20 @@ const Register = () => {
               </div>
               <div className="block md:hidden font-semibold mt-5">
                 <p>Already have an Account?</p>
-                <Link to="/login" className="text-sm text-gray-500 hover:underline">
+                <Link
+                  to="/login"
+                  className="text-sm text-gray-500 hover:underline"
+                >
                   Login
                 </Link>
               </div>
-              <button type="submit" className="border-2 mt-5 w-full bg-black text-white py-3 rounded-md hover:bg-gray-800 transition duration-300"> Sign Up </button>
+              <button
+                type="submit"
+                className="border-2 mt-5 w-full bg-black text-white py-3 rounded-md hover:bg-gray-800 transition duration-300"
+              >
+                {" "}
+                Sign Up{" "}
+              </button>
             </form>
           </div>
         </div>
