@@ -58,7 +58,7 @@ const Register = () => {
             <p className=" text-gray-200 mb-12">Already have Account? </p>
             <Link
               to="/login"
-              className="border-2 rounder-lg font-semibold border-white py-2 px-8 hover:bg-white hover:text-black transition duration-300"
+              className="border-2 rounded-lg font-semibold border-white py-2 px-8 hover:bg-white hover:text-black transition duration-300"
             >
               Login
             </Link>
@@ -70,13 +70,13 @@ const Register = () => {
           <div className="w-full max-w-sm">
             <div className="flex justify-center mb-12">
               <div className="flex flex-col-reverse sm:flex-row items-center justify-center gap-5">
-                <h3 className="font-medium text-4xl overflow-hidden">
+                <h3 className="font-medium text-4xl">
                   Sign Up
                 </h3>
                 <img
                   src={logo}
                   alt="logo"
-                  className="h-auto w-24 object-cover"
+                  className="h-auto w-22 object-cover"
                 />
               </div>
             </div>
@@ -122,7 +122,7 @@ const Register = () => {
               </div>
               <button
                 type="submit"
-                className="border-2 mt-5 w-full bg-black text-white py-3 rounded-md hover:bg-gray-800 transition duration-300"
+                className="border-2 mt-5 w-full border-black font-semibold bg-black text-white py-2 rounded-lg hover:bg-white hover:text-black transition duration-300"
               >
                 {" "}
                 Sign Up{" "}

@@ -42,10 +42,10 @@ const EmailVerification = () => {
         {/* left side  */}
         <div className="w-full md:ww-1/2 flex items-center justify-center bg-white p-8 relative">
           <Link
-            to={"/login"}
+            to={"/register"}
             className="border-2 border-black rounded-3xl font-bold w-52 py-2 px-4 fixed top-10 left-10 hover:bg-black hover:text-white transition duration-300 text-center"
           >
-            Back to Login
+            Back to Sign Up
           </Link>
           <div className="max-w-sm w-full">
             <div className="flex justify-center mb-12">
@@ -90,13 +90,13 @@ const EmailVerification = () => {
               />
             </div>
             <p className="text-gray-300 text-center mb-12">
-              New to our platform? Sign Up now
+              Already have an account? <br /> Please log in
             </p>
             <Link
-              to={"/register"}
+              to={"/login"}
               className="border-2 mt-5 w-full font-bold border-white  bg-black text-white py-3 px-8 rounded-md hover:bg-gray-200 hover:text-black transition duration-300"
             >
-              Sign Up
+              Login
             </Link>
           </div>
         </div>

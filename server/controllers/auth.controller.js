@@ -240,6 +240,10 @@ export const resetPassword = catchAsyncErrors(async (req, res, next) => {
     res.status(200).json({
       success: true,
       message: "Password reset successful",
+      user: {
+        ...user._doc,
+        password: undefined,
+      },
       token
     })
   } catch (error) {
@@ -251,8 +255,8 @@ export const resetPassword = catchAsyncErrors(async (req, res, next) => {
 export const updatePassword = catchAsyncErrors(async (req, res, next) => {
   const user = await User.findById(req.user.id).select("+password");
 
-  const { currentPassword, newPassword, confirmNewPassword } = req.body;
-  if (!currentPassword || !newPassword || !confirmNewPassword) {
+  const { currentPassword, newPassword } = req.body;
+  if (!currentPassword || !newPassword) {
     return next(new ErrorHandler("Please enter all fields", 400));
   }
 
@@ -265,9 +269,9 @@ export const updatePassword = catchAsyncErrors(async (req, res, next) => {
     return next(new ErrorHandler("New password cannot be the same as the current password", 400));
   }
 
-  if(newPassword !== confirmNewPassword) {
-    return next(new ErrorHandler("Passwords not same, please confirm your password correctly", 400));
-  }
+  // if(newPassword !== confirmNewPassword) {
+  //   return next(new ErrorHandler("Passwords not same, please confirm your password correctly", 400));
+  // }
 
   if(newPassword.length < 6 || newPassword.length > 20) {
     return next(new ErrorHandler("Password must be between 6 and 20 characters", 400));

@@ -81,7 +81,6 @@ export const recordBorrowedBooks = catchAsyncErrors(async (req, res, next) => {
 
 export const getBorrowedBooksForAdmin = catchAsyncErrors(async (req, res, next) => {
     const borrowedBooks = await Borrow.find();
-    console.log(typeof borrowedBooks);
     res.status(200).json({
         success: true,
         borrowedBooks
@@ -91,7 +90,6 @@ export const getBorrowedBooksForAdmin = catchAsyncErrors(async (req, res, next) 
 export const returnBorrowedBooks = catchAsyncErrors(async (req, res, next) => {
     const {bookId} = req.params;
     const {email} = req.body;
-    console.log(typeof bookId);
     
     if(!email) {
         return next(new ErrorHandler("Please enter email", 400));

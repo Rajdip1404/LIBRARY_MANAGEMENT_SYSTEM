@@ -8,7 +8,7 @@ export const isAuthenticated = catchAsyncErrors(async (req, res, next) => {
   if (token === undefined) {
     return res.status(401).json({
       success: false,
-      message: "User is unauthenticated",
+      message: `User is unauthenticated`,
     });
   }
 
@@ -46,6 +46,17 @@ export const isAdmin = catchAsyncErrors(async (req, res, next) => {
     return res.status(403).json({
       success: false,
       message: "Access denied, only admin can access this route",
+    });
+  }
+
+  next();
+});
+
+export const isLibrarianOrAdmin = catchAsyncErrors(async (req, res, next) => {
+  if (req.user.role !== "Admin" && req.user.role !== "Librarian") {
+    return res.status(403).json({
+      success: false,
+      message: "Access denied, only admin and librarian can access this route",
     });
   }
 

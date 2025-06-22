@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import settingIcon from "../assets/setting.png";
 import userIcon from "../assets/user.png";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { toggleSettingPopup } from "../store/slices/popUp.slice";
+import { toggleSettingPopup } from "../store/slices/popup.slice";
 
 const Header = () => {
-    const dispact = useDispatch();
+    const dispatch = useDispatch();
     const { user } = useSelector((state) => state.auth);
 
     const [currentTime, setCurrentTime] = useState("");
@@ -29,28 +29,43 @@ const Header = () => {
       return () => clearInterval(interval);
     }, []);
 
-  return <>
-    <header className="absolute top-0 bg-white w-full py-4 px-6 left-0 shadow-md flex justify-between items-center">
-      {/* left side */}
-      <div className="flex items-center gap-2">
-        <img src={userIcon} alt="userIcon" className="w-8 h-8"/>
-        <div className="flex flex-col gap-1">
-          <span className="text-sm font-medium sm:text-lg lg:text-xl sm:font-semibold">{user && user?.name}</span>
-          <span className="text-xs sm:text-sm lg:text-base">{user && user?.email}</span>
-          <span className="text-xs sm:text-sm lg:text-base">{user && user?.role}</span>
+  return (
+    <>
+      <header className="z-10 top-0 bg-white w-full py-4 px-6 left-0 shadow-md flex justify-between items-center">
+        {/* left side */}
+        <div className="flex items-center gap-2">
+          <img src={userIcon} alt="userIcon" className="w-8 h-8" />
+          <div className="ml-2 flex flex-col">
+            <span className="text-sm font-medium sm:text-lg lg:text-xl sm:font-semibold text-black">
+              {user && user?.name}{" "}
+              {user && user?.role === "Admin" && (
+                <span className="text-blue-500 text-xs sm:text-sm lg:text-base ml-1">
+                  (Admin)
+                </span>
+              )}
+            </span>
+            <span className="text-xs sm:text-sm lg:text-base">
+              {user && user?.email}
+            </span>
+          </div>
         </div>
-      </div>
-      {/* right side */}
-      <div className="hidden md:flex items-center gap-2">
-        <div className="flex flex-col text-sm lg:text-base items-end font-semibold">
-          <span>{currentTime}</span>
-          <span>{currentDate}</span>
+        {/* right side */}
+        <div className="hidden lg:flex items-center gap-2">
+          <div className="flex flex-col text-sm lg:text-base items-end font-semibold">
+            <span>{currentTime}</span>
+            <span>{currentDate}</span>
+          </div>
+          <span className="bg-black h-14 w-[2px]" />
+          <img
+            src={settingIcon}
+            alt="settingIcon"
+            className="w-8 h-8 cursor-pointer"
+            onClick={() => dispatch(toggleSettingPopup())}
+          />
         </div>
-        <span className="bg-black h-14 w-[2px]" />
-        <img src={settingIcon} alt="settingIcon" className="w-8 h-8" onClick={() => toggleSettingPopup()} />
-      </div>
-    </header>
-  </>;
+      </header>
+    </>
+  );
 };
 
 export default Header;

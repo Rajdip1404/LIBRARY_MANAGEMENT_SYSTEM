@@ -11,13 +11,15 @@ import { RiAdminFill } from "react-icons/ri";
 import { useDispatch, useSelector } from "react-redux";
 import {toast} from "react-toastify";
 import {logout, resetAuthSlice} from "../store/slices/auth.slice.js";
-import {toggleAddNewAdminPopup, toggleSettingPopup} from "../store/slices/popUp.slice.js";
+import {toggleAddNewAdminPopup, toggleSettingPopup, toggleAddNewLibrarianPopup} from "../store/slices/popUp.slice.js";
 import AddNewAdmin from "../popups/AddNewAdmin.jsx";
+import SettingPopup from "../popups/SettingPopup.jsx";
+import AddNewLibrarian from "../popups/AddNewLibrarian.jsx";
 
 
 const SideBar = ({ isSideBarOpen, setIsSideBarOpen, setSelectedComponent }) => {
   const dispatch = useDispatch();
-  const { addNewAdminPopup } = useSelector((state) => state.popup);
+  const { addNewAdminPopup, addNewLibrarianPopup, settingPopup } = useSelector((state) => state.popup);
 
   const { loading, error, message, isAuthenticated, user } = useSelector(
     (state) => state.auth
@@ -43,7 +45,7 @@ const SideBar = ({ isSideBarOpen, setIsSideBarOpen, setSelectedComponent }) => {
       <aside
         className={`${
           isSideBarOpen ? "left-0" : "-left-full"
-        } z-10 transition-all duration-700 md:relative md:left-0 flex w-64 bg-black text-white flex-col h-full`}
+        } z-10 transition-all duration-700 lg:relative lg:left-0 flex w-64 bg-black text-white flex-col h-full`}
         style={{ position: "fixed" }}
       >
         <div className="px-6 py-4 my-8">
@@ -51,7 +53,7 @@ const SideBar = ({ isSideBarOpen, setIsSideBarOpen, setSelectedComponent }) => {
         </div>
         <nav className="flex-1 px-6 space-y-2">
           <button
-            onClick={() => setSelectedComponent("Dashboard")}
+            onClick={() => setSelectedComponent("dashboard")}
             className="w-full py-2 font-medium bg-transparent rounded-md hover:cursor-pointer flex items-center space-x-2"
           >
             <img src={dashboardIcon} alt="dashboard" /> <span>Dashboard</span>
@@ -82,11 +84,17 @@ const SideBar = ({ isSideBarOpen, setIsSideBarOpen, setSelectedComponent }) => {
               >
                 <RiAdminFill className="w-6 h-6" /> <span>Add New Admin</span>
               </button>
+              <button
+                onClick={() => dispatch(toggleAddNewLibrarianPopup())}
+                className="w-full py-2 font-medium bg-transparent rounded-md hover:cursor-pointer flex items-center space-x-2"
+              >
+                <RiAdminFill className="w-6 h-6" /> <span>Add New Librarian</span>
+              </button>
             </>
           )}
           {isAuthenticated && user?.role === "User" && (
             <button
-              onClick={() => setSelectedComponent("My Borrowed Books")}
+              onClick={() => setSelectedComponent("my-borrowed-books")}
               className="w-full py-2 font-medium bg-transparent rounded-md hover:cursor-pointer flex items-center space-x-2"
             >
               <img src={catalogIcon} alt="my-borrowed-books" />{" "}
@@ -95,7 +103,7 @@ const SideBar = ({ isSideBarOpen, setIsSideBarOpen, setSelectedComponent }) => {
           )}
           <button
             onClick={() => dispatch(toggleSettingPopup())}
-            className="md:hidden w-full py-2 font-medium bg-transparent rounded-md hover:cursor-pointer flex items-center space-x-2"
+            className="w-full py-2 font-medium bg-transparent rounded-md hover:cursor-pointer flex items-center space-x-2"
           >
             <img src={settingIcon} alt="setting" />{" "}
             <span>Update Credentials</span>
@@ -117,6 +125,8 @@ const SideBar = ({ isSideBarOpen, setIsSideBarOpen, setSelectedComponent }) => {
         />
       </aside>
       {addNewAdminPopup && <AddNewAdmin />}
+      {settingPopup && <SettingPopup />}
+      {addNewLibrarianPopup && <AddNewLibrarian />}
     </>
   );
 };

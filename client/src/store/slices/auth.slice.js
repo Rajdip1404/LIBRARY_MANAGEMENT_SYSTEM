@@ -37,7 +37,7 @@ const authSlice = createSlice({
     },
     emailVerificationSuccess: (state, action) => {
       state.loading = false;
-      state.user = action.payload;
+      state.user = action.payload.user;
       state.isAuthenticated = true;
       state.error = null;
       state.message = action.payload.message || "Account verified successfully";
@@ -56,7 +56,7 @@ const authSlice = createSlice({
     },
     loginSuccess: (state, action) => {
       state.loading = false;
-      state.user = action.payload;
+      state.user = action.payload.user;
       state.isAuthenticated = true;
       state.error = null;
       state.message = action.payload.message;
@@ -72,12 +72,12 @@ const authSlice = createSlice({
       state.error = null;
       state.message = null;
     },
-    logoutSuccess: (state) => {
+    logoutSuccess: (state, action) => {
       state.loading = false;
       state.user = null;
       state.isAuthenticated = false;
       state.error = null;
-      state.message = action.payload;
+      state.message = action.payload.message || "Logged out successfully";
     },
     logoutFailure: (state, action) => {
       state.loading = false;
@@ -111,7 +111,7 @@ const authSlice = createSlice({
     forgotPasswordSuccess: (state, action) => {
       state.loading = false;
       state.error = null;
-      state.message = action.payload;
+      state.message = action.payload.message || "Password reset link sent to your email";
     },
     forgotPasswordFailure: (state, action) => {
       state.loading = false;
@@ -185,8 +185,7 @@ export const register = (data) => async (dispatch) => {
   }
 };
 
-export const emailVerification =
-  (email, verificationCode) => async (dispatch) => {
+export const emailVerification = (email, verificationCode) => async (dispatch) => {
     dispatch(authSlice.actions.emailVerificationRequest());
     try {
       const response = await axios.post(
@@ -232,10 +231,11 @@ export const logout = () => async (dispatch) => {
     const response = await axios.get(`${API_URL}/api/auth/logout`, {
       withCredentials: true,
     });
-    dispatch(authSlice.actions.logoutSuccess(response.data.message));
+    console.log("Logout Response:", response.data); // Debugging log
+    dispatch(authSlice.actions.logoutSuccess(response.data));
     dispatch(authSlice.actions.resetAuthSlice());
   } catch (error) {
-    dispatch(authSlice.actions.logoutFailure(error.response.data.message));
+    dispatch(authSlice.actions.logoutFailure(error.message));
   }
 };
 
@@ -264,6 +264,7 @@ export const forgotPassword = (email) => async (dispatch) => {
         },
       }
     );
+    console.log("Forgot Password Response:", response.data); // Debugging log
     dispatch(authSlice.actions.forgotPasswordSuccess(response.data));
   } catch (error) {
     dispatch(
@@ -285,7 +286,8 @@ export const resetPassword = (data, token) => async (dispatch) => {
         },
       }
     );
-    dispatch(authSlice.actions.resetPasswordSuccess(response.data.message));
+    console.log("Reset Password Response:", response.data); // Debugging log
+    dispatch(authSlice.actions.resetPasswordSuccess(response.data));
   } catch (error) {
     dispatch(
       authSlice.actions.resetPasswordFailure(error.response.data.message)

@@ -22,7 +22,7 @@ const userSchema = new mongoose.Schema(
     },
     role: {
       type: String,
-      enum: ["User", "Admin"],
+      enum: ["User", "Admin", "Librarian"],
       default: "User",
     },
     createdAt: {
@@ -44,7 +44,7 @@ const userSchema = new mongoose.Schema(
           default: false,
         },
         bookTitle: String,
-        borrowedDate: Date,
+        borrowDate: Date,
         dueDate: Date,
       },
     ],
