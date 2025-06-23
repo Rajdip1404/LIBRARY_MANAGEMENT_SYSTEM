@@ -10,7 +10,12 @@ const UpdateBookPopup = ({ book }) => {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [description, setDescription] = useState("");
-  const [rentalPrice, setRentalPrice] = useState("");
+  const [rentalPrice, setRentalPrice] = useState({
+    7: "",
+    14: "",
+    21: "",
+    28: "",
+  });
   const [category, setCategory] = useState("");
   const [quantity, setQuantity] = useState("");
   const [publicationYear, setPublicationYear] = useState("");
@@ -22,7 +27,7 @@ const UpdateBookPopup = ({ book }) => {
       setTitle(book.title || "");
       setAuthor(book.author || "");
       setDescription(book.description || "");
-      setRentalPrice(book.rentalPrice || "");
+      setRentalPrice(book.rentalPrice || { 7: "", 14: "", 21: "", 28: "" });
       setCategory(book.category || "");
       setQuantity(book.quantity || "");
       setPublicationYear(book.publicationYear || "");
@@ -30,25 +35,27 @@ const UpdateBookPopup = ({ book }) => {
     }
   }, [book]);
 
+  const handleRentalPriceChange = (days, value) => {
+    setRentalPrice((prev) => ({ ...prev, [days]: value }));
+  };
+
   const handleUpdateBook = (e) => {
     e.preventDefault();
+
     const formData = new FormData();
     formData.append("title", title);
     formData.append("author", author);
     formData.append("description", description);
-    formData.append("rentalPrice", rentalPrice);
+    formData.append("rentalPrice", JSON.stringify(rentalPrice)); // Stringify here
     formData.append("category", category);
     formData.append("quantity", quantity);
     formData.append("publicationYear", publicationYear);
     formData.append("edition", edition);
 
-    console.log(book._id);
-    dispatch(updateBook( bookId, formData )).then(
-      () => {
-        dispatch(fetchAllBooks());
-        dispatch(toggleUpdateBookPopup());
-      }
-    );
+    dispatch(updateBook(bookId, formData)).then(() => {
+      dispatch(fetchAllBooks());
+      dispatch(toggleUpdateBookPopup());
+    });
   };
 
   return (
@@ -58,7 +65,7 @@ const UpdateBookPopup = ({ book }) => {
           <h2 className="text-lg font-bold">Update Book</h2>
           <button
             onClick={() => dispatch(toggleUpdateBookPopup())}
-            className="text-2xl text-center transition duration-300 hover:cursor-pointer font-bold"
+            className="text-2xl font-bold hover:text-red-500"
           >
             &times;
           </button>
@@ -69,7 +76,7 @@ const UpdateBookPopup = ({ book }) => {
           className="p-6 grid grid-cols-1 sm:grid-cols-2 gap-4"
         >
           <div>
-            <label className="block text-gray-700 font-semibold mb-1">
+            <label className="block font-semibold mb-1 text-gray-700">
               Title
             </label>
             <input
@@ -77,12 +84,12 @@ const UpdateBookPopup = ({ book }) => {
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               required
-              className="w-full border border-gray-300 rounded-lg px-4 py-2 bg-gray-100"
+              className="w-full px-4 py-2 border border-gray-300 bg-gray-100 rounded"
             />
           </div>
 
           <div>
-            <label className="block text-gray-700 font-semibold mb-1">
+            <label className="block font-semibold mb-1 text-gray-700">
               Author
             </label>
             <input
@@ -90,38 +97,43 @@ const UpdateBookPopup = ({ book }) => {
               value={author}
               onChange={(e) => setAuthor(e.target.value)}
               required
-              className="w-full border border-gray-300 rounded-lg px-4 py-2 bg-gray-100"
+              className="w-full px-4 py-2 border border-gray-300 bg-gray-100 rounded"
             />
           </div>
 
           <div className="sm:col-span-2">
-            <label className="block text-gray-700 font-semibold mb-1">
+            <label className="block font-semibold mb-1 text-gray-700">
               Description
             </label>
             <textarea
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               required
-              className="w-full border border-gray-300 rounded-lg px-4 py-2 bg-gray-100 resize-none"
+              className="w-full px-4 py-2 border border-gray-300 bg-gray-100 rounded resize-none"
               rows={3}
             />
           </div>
 
-          <div>
-            <label className="block text-gray-700 font-semibold mb-1">
-              Rental Price
-            </label>
-            <input
-              type="number"
-              value={rentalPrice}
-              onChange={(e) => setRentalPrice(e.target.value)}
-              required
-              className="w-full border border-gray-300 rounded-lg px-4 py-2 bg-gray-100"
-            />
-          </div>
+          {/* Rental Prices for Durations */}
+          {["7", "14", "21", "28"].map((duration) => (
+            <div key={duration}>
+              <label className="block font-semibold mb-1 text-gray-700">
+                Rental Price for {duration} days
+              </label>
+              <input
+                type="number"
+                value={rentalPrice[duration]}
+                onChange={(e) =>
+                  handleRentalPriceChange(duration, e.target.value)
+                }
+                required
+                className="w-full px-4 py-2 border border-gray-300 bg-gray-100 rounded"
+              />
+            </div>
+          ))}
 
           <div>
-            <label className="block text-gray-700 font-semibold mb-1">
+            <label className="block font-semibold mb-1 text-gray-700">
               Category
             </label>
             <input
@@ -129,12 +141,12 @@ const UpdateBookPopup = ({ book }) => {
               value={category}
               onChange={(e) => setCategory(e.target.value)}
               required
-              className="w-full border border-gray-300 rounded-lg px-4 py-2 bg-gray-100"
+              className="w-full px-4 py-2 border border-gray-300 bg-gray-100 rounded"
             />
           </div>
 
           <div>
-            <label className="block text-gray-700 font-semibold mb-1">
+            <label className="block font-semibold mb-1 text-gray-700">
               Quantity
             </label>
             <input
@@ -142,12 +154,12 @@ const UpdateBookPopup = ({ book }) => {
               value={quantity}
               onChange={(e) => setQuantity(e.target.value)}
               required
-              className="w-full border border-gray-300 rounded-lg px-4 py-2 bg-gray-100"
+              className="w-full px-4 py-2 border border-gray-300 bg-gray-100 rounded"
             />
           </div>
 
           <div>
-            <label className="block text-gray-700 font-semibold mb-1">
+            <label className="block font-semibold mb-1 text-gray-700">
               Publication Year
             </label>
             <input
@@ -155,12 +167,12 @@ const UpdateBookPopup = ({ book }) => {
               value={publicationYear}
               onChange={(e) => setPublicationYear(e.target.value)}
               required
-              className="w-full border border-gray-300 rounded-lg px-4 py-2 bg-gray-100"
+              className="w-full px-4 py-2 border border-gray-300 bg-gray-100 rounded"
             />
           </div>
 
-          <div className="sm:col-span-2">
-            <label className="block text-gray-700 font-semibold mb-1">
+          <div>
+            <label className="block font-semibold mb-1 text-gray-700">
               Edition
             </label>
             <input
@@ -168,11 +180,11 @@ const UpdateBookPopup = ({ book }) => {
               value={edition}
               onChange={(e) => setEdition(e.target.value)}
               required
-              className="w-full border border-gray-300 rounded-lg px-4 py-2 bg-gray-100"
+              className="w-full px-4 py-2 border border-gray-300 bg-gray-100 rounded"
             />
           </div>
 
-          <div className="sm:col-span-2 flex justify-end mt-4 border-t pt-4 border-gray-200">
+          <div className="sm:col-span-2 mt-4 border-t pt-4">
             <button
               type="submit"
               className="w-full bg-black text-white font-semibold py-2 rounded-lg hover:bg-gray-300 hover:text-black transition duration-200"

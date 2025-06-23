@@ -28,6 +28,10 @@ const borrowSchema = new mongoose.Schema({
   borrowDate: {
     type: Date,
     default: Date.now,
+  },
+  duration: {
+    type: String,
+    enum: ['7', '14', '21', '28'],
     required: true,
   },
   dueDate: {
@@ -44,7 +48,7 @@ const borrowSchema = new mongoose.Schema({
   },
   status: {
     type: String,
-    enum: ["borrowed", "returned"],
+    enum: ["borrowed", "requested", "returned"],
     default: "borrowed",
   },
   notified: {

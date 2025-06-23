@@ -6,8 +6,10 @@ const popupSlice = createSlice({
     initialState: {
         settingPopup: false,
         addBookPopup: false,
+        borrowBookPopup: false,
         updateBookPopup: false,
         readBookPopup: false,
+        deleteBookPopup: false,
         recordBookPopup: false,
         returnBookPopup: false,
         addNewAdminPopup: false,
@@ -20,11 +22,17 @@ const popupSlice = createSlice({
         toggleAddBookPopup: (state) => {
             state.addBookPopup = !state.addBookPopup;
         },
+        toggleBorrowBookPopup: (state) => {
+            state.borrowBookPopup = !state.borrowBookPopup;
+        },
         toggleUpdateBookPopup: (state) => {
             state.updateBookPopup = !state.updateBookPopup;
         },
         toggleReadBookPopup: (state) => {
             state.readBookPopup = !state.readBookPopup;
+        },
+        toggleDeleteBookPopup: (state) => {
+            state.deleteBookPopup = !state.deleteBookPopup;
         },
         toggleRecordBookPopup: (state) => {
             state.recordBookPopup = !state.recordBookPopup;
@@ -41,6 +49,8 @@ const popupSlice = createSlice({
         closeAllPopup: (state) => {
             state.settingPopup = false;
             state.addBookPopup = false;
+            state.borrowBookPopup = false;
+            state.updateBookPopup = false;
             state.readBookPopup = false;
             state.recordBookPopup = false;
             state.returnBookPopup = false;
@@ -53,8 +63,10 @@ const popupSlice = createSlice({
 export const {
     toggleSettingPopup,
     toggleAddBookPopup,
+    toggleBorrowBookPopup,
     toggleUpdateBookPopup,
     toggleReadBookPopup,
+    toggleDeleteBookPopup,
     toggleRecordBookPopup,
     toggleReturnBookPopup,
     toggleAddNewAdminPopup,

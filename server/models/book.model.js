@@ -1,5 +1,25 @@
 import mongoose from "mongoose";
 
+const categoryEnum = [
+  "Fiction",
+  "Non-Fiction",
+  "Science",
+  "Science Fiction",
+  "Technology",
+  "Education",
+  "History",
+  "Biography",
+  "Autobiography",
+  "Fantasy",
+  "Romance",
+  "Horror",
+  "Mystery",
+  "Crime",
+  "Self Improvement",
+  "Novel",
+  "Children",
+];
+
 const bookSchema = new mongoose.Schema(
   {
     title: {
@@ -36,10 +56,22 @@ const bookSchema = new mongoose.Schema(
       trim: true,
       default: "1st",
     },
+    // rentalPrice: {
+    //   type: Number,
+    //   required: true,
+    // },
     rentalPrice: {
-      type: Number,
+      type: Map,
+      of: Number,
       required: true,
+      default: {
+        7: 100,
+        14: 180,
+        21: 250,
+        28: 300,
+      },
     },
+
     quantity: {
       type: Number,
       required: true,
@@ -56,6 +88,7 @@ const bookSchema = new mongoose.Schema(
     category: {
       type: String,
       required: true,
+      enum: categoryEnum,
     },
   },
   { timestamps: true }
@@ -68,5 +101,7 @@ bookSchema.index(
 );
 
 const Book = mongoose.model("Book", bookSchema);
+
+export const bookCategories = categoryEnum;
 
 export default Book;

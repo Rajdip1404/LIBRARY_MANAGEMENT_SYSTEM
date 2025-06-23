@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addBook, fetchAllBooks } from "../store/slices/book.slice";
 import { toggleAddBookPopup } from "../store/slices/popUp.slice";
+import { bookCategories } from "../../../server/models/book.model.js";
 
 const AddBookPopup = () => {
   const dispatch = useDispatch();
@@ -9,7 +10,12 @@ const AddBookPopup = () => {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [description, setDescription] = useState("");
-  const [rentalPrice, setRentalPrice] = useState("");
+  const [rentalPrices, setRentalPrices] = useState({
+    7: "",
+    14: "",
+    21: "",
+    28: "",
+  });
   const [category, setCategory] = useState("");
   const [quantity, setQuantity] = useState("");
   const [publicationYear, setPublicationYear] = useState("");
@@ -27,27 +33,33 @@ const AddBookPopup = () => {
     }
   };
 
+  const handleRentalPriceChange = (days, value) => {
+    setRentalPrices((prev) => ({ ...prev, [days]: value }));
+  };
+
   const handleAddBook = (e) => {
     e.preventDefault();
+
     const formData = new FormData();
     formData.append("title", title);
     formData.append("author", author);
     formData.append("description", description);
-    formData.append("rentalPrice", rentalPrice);
+    formData.append("rentalPrice", JSON.stringify(rentalPrices));
     formData.append("category", category);
     formData.append("quantity", quantity);
     formData.append("publicationYear", publicationYear);
     formData.append("edition", edition);
     if (image) formData.append("image", image);
 
-    dispatch(addBook(formData));
-    dispatch(fetchAllBooks());
+    dispatch(addBook(formData)).then(() => {
+      dispatch(fetchAllBooks());
+      dispatch(toggleAddBookPopup());
+    });
   };
 
   return (
     <div className="fixed inset-0 bg-black/30 p-5 flex items-center justify-center z-50 overflow-y-auto">
       <div className="w-full max-w-3xl bg-white rounded-lg shadow-lg">
-        {/* Header */}
         <div className="flex justify-between items-center bg-black text-white px-6 py-4 rounded-t-lg">
           <h2 className="text-lg font-bold">Add New Book</h2>
           <button
@@ -58,45 +70,77 @@ const AddBookPopup = () => {
           </button>
         </div>
 
-        {/* Form */}
-        <form onSubmit={handleAddBook} className="p-6">
-          {/* Top Section */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {/* Image Preview + Upload */}
-            <div className="flex flex-col items-center sm:items-start gap-3">
+        <form onSubmit={handleAddBook} className="p-6 space-y-6">
+          <div>
+            <label className="block text-gray-700 font-semibold mb-1">
+              Title
+            </label>
+            <input
+              type="text"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              required
+              className="w-full border border-gray-300 rounded px-4 py-2 bg-gray-100"
+            />
+          </div>
+
+          <div>
+            <label className="block text-gray-700 font-semibold mb-1">
+              Description
+            </label>
+            <textarea
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              required
+              className="w-full border border-gray-300 rounded px-4 py-2 bg-gray-100 resize-none"
+              rows={3}
+            />
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-2">
+            <div className="flex flex-col items-center sm:items-start w-full sm:w-1/3 gap-2">
               <label className="block text-gray-700 font-semibold">
                 Book Cover Image
               </label>
-              {preview && (
-                <img
-                  src={preview}
-                  alt="preview"
-                  className="w-36 h-36 object-cover rounded shadow"
-                />
-              )}
-              <input
-                type="file"
-                accept="image/*"
-                onChange={handleImageChange}
-                className="block w-full text-sm border border-gray-300 rounded px-3 py-2 bg-gray-100"
-              />
-            </div>
-
-            {/* Top Right Fields */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label className="block text-gray-700 font-semibold mb-1">
-                  Title
-                </label>
+              <div
+                className="w-36 h-40 border border-gray-300 bg-gray-100 rounded flex items-center justify-center cursor-pointer relative overflow-hidden"
+                onClick={() =>
+                  document.getElementById("bookImageInput").click()
+                }
+              >
+                {preview ? (
+                  <img
+                    src={preview}
+                    alt="preview"
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-10 h-10 text-gray-400"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M7 16V4m0 0L3 8m4-4l4 4M17 8v8m0 0l-4-4m4 4l4-4"
+                    />
+                  </svg>
+                )}
                 <input
-                  type="text"
-                  value={title}
-                  onChange={(e) => setTitle(e.target.value)}
-                  required
-                  className="w-full border border-gray-300 rounded px-4 py-2 bg-gray-100"
+                  id="bookImageInput"
+                  type="file"
+                  accept="image/*"
+                  onChange={handleImageChange}
+                  className="hidden"
                 />
               </div>
+            </div>
 
+            <div className="w-full sm:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label className="block text-gray-700 font-semibold mb-1">
                   Author
@@ -109,28 +153,47 @@ const AddBookPopup = () => {
                   className="w-full border border-gray-300 rounded px-4 py-2 bg-gray-100"
                 />
               </div>
-
               <div>
                 <label className="block text-gray-700 font-semibold mb-1">
                   Category
                 </label>
-                <input
-                  type="text"
+                <select
                   value={category}
                   onChange={(e) => setCategory(e.target.value)}
                   required
                   className="w-full border border-gray-300 rounded px-4 py-2 bg-gray-100"
-                />
+                >
+                  <option value="" disabled>
+                    Select Category
+                  </option>
+                  {bookCategories.map((cat) => (
+                    <option key={cat} value={cat}>
+                      {cat}
+                    </option>
+                  ))}
+                </select>
               </div>
 
               <div>
                 <label className="block text-gray-700 font-semibold mb-1">
-                  Rental Price
+                  Edition
+                </label>
+                <input
+                  type="text"
+                  value={edition}
+                  onChange={(e) => setEdition(e.target.value)}
+                  required
+                  className="w-full border border-gray-300 rounded px-4 py-2 bg-gray-100"
+                />
+              </div>
+              <div>
+                <label className="block text-gray-700 font-semibold mb-1">
+                  Publication Year
                 </label>
                 <input
                   type="number"
-                  value={rentalPrice}
-                  onChange={(e) => setRentalPrice(e.target.value)}
+                  value={publicationYear}
+                  onChange={(e) => setPublicationYear(e.target.value)}
                   required
                   className="w-full border border-gray-300 rounded px-4 py-2 bg-gray-100"
                 />
@@ -138,21 +201,8 @@ const AddBookPopup = () => {
             </div>
           </div>
 
-          {/* Bottom Section */}
+          {/* Quantity & Rental Prices */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="sm:col-span-2">
-              <label className="block text-gray-700 font-semibold mb-1">
-                Description
-              </label>
-              <textarea
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                required
-                className="w-full border border-gray-300 rounded px-4 py-2 bg-gray-100 resize-none"
-                rows={3}
-              />
-            </div>
-
             <div>
               <label className="block text-gray-700 font-semibold mb-1">
                 Quantity
@@ -166,34 +216,29 @@ const AddBookPopup = () => {
               />
             </div>
 
-            <div>
-              <label className="block text-gray-700 font-semibold mb-1">
-                Publication Year
+            <div className="space-y-2">
+              <label className="block text-gray-700 font-semibold">
+                Rental Price (per duration)
               </label>
-              <input
-                type="number"
-                value={publicationYear}
-                onChange={(e) => setPublicationYear(e.target.value)}
-                required
-                className="w-full border border-gray-300 rounded px-4 py-2 bg-gray-100"
-              />
-            </div>
-
-            <div className="sm:col-span-2">
-              <label className="block text-gray-700 font-semibold mb-1">
-                Edition
-              </label>
-              <input
-                type="text"
-                value={edition}
-                onChange={(e) => setEdition(e.target.value)}
-                required
-                className="w-full border border-gray-300 rounded px-4 py-2 bg-gray-100"
-              />
+              {["7", "14", "21", "28"].map((day) => (
+                <div key={day} className="flex items-center gap-2">
+                  <span className="w-14">{day}d:</span>
+                  <input
+                    type="number"
+                    value={rentalPrices[day]}
+                    onChange={(e) =>
+                      handleRentalPriceChange(day, e.target.value)
+                    }
+                    required
+                    placeholder={`₹ for ${day} days`}
+                    className="flex-1 border border-gray-300 rounded px-3 py-1 bg-gray-100"
+                  />
+                </div>
+              ))}
             </div>
           </div>
 
-          {/* Submit Button */}
+          {/* Submit */}
           <div className="border-t pt-4 border-gray-200">
             <button
               type="submit"
@@ -206,7 +251,6 @@ const AddBookPopup = () => {
       </div>
     </div>
   );
-  
 };
 
 export default AddBookPopup;

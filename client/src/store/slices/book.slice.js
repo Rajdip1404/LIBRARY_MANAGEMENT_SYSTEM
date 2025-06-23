@@ -43,6 +43,20 @@ const bookSlice = createSlice({
       state.loading = false;
       state.error = action.payload;
     },
+    deleteBookRequest: (state) => {
+      state.loading = true;
+      state.error = null;
+      state.message = null;
+    },
+    deleteBookSuccess: (state, action) => {
+      state.loading = false;
+      state.error = null;
+      state.message = action.payload || "Book deleted successfully";
+    },
+    deleteBookFailure: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
 
     updateBookRequest: (state) => {
       state.loading = true;
@@ -102,6 +116,25 @@ export const addBook = (bookData) => async (dispatch) => {
   } catch (error) {
     dispatch(
       bookSlice.actions.addBookFailure(
+        error.response ? error.response.data.message : "Network Error"
+      )
+    );
+  }
+};
+
+export const deleteBook = (bookId) => async (dispatch) => {
+  dispatch(bookSlice.actions.deleteBookRequest());
+  try {
+    const response = await axios.delete(
+      `${API_URL}/api/book/admin/delete-book/${bookId}`,
+      {
+        withCredentials: true,
+      }
+    );
+    dispatch(bookSlice.actions.deleteBookSuccess(response.data.message));
+  } catch (error) {
+    dispatch(
+      bookSlice.actions.deleteBookFailure(
         error.response ? error.response.data.message : "Network Error"
       )
     );

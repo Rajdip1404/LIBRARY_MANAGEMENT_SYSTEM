@@ -4,7 +4,6 @@ import User from "../models/user.model.js";
 
 export const isAuthenticated = catchAsyncErrors(async (req, res, next) => {
   const token = req.cookies.token;
-
   if (token === undefined) {
     return res.status(401).json({
       success: false,
