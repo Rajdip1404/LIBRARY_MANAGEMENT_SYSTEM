@@ -1,9 +1,9 @@
-import React from 'react'
-import { useDispatch } from 'react-redux';
+import React from "react";
+import { useDispatch } from "react-redux";
 import { returnBorrowedBook } from "../store/slices/borrow.slice";
-import { toggleReturnBookPopup } from '../store/slices/popUp.slice';
+import { toggleReturnBookPopup } from "../store/slices/popup.slice";
 
-const ReturnBookPopup = ({bookId, email}) => {
+const ReturnBookPopup = ({ bookId, email }) => {
   const dispatch = useDispatch();
   const handleReturnBook = (e) => {
     e.preventDefault();
@@ -49,6 +49,6 @@ const ReturnBookPopup = ({bookId, email}) => {
       </div>
     </div>
   );
-}
+};
 
-export default ReturnBookPopup
+export default ReturnBookPopup;

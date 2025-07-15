@@ -49,8 +49,15 @@ const userSchema = new mongoose.Schema(
       },
     ],
     avatar: {
-      public_id: String,
-      url: String,
+      public_id: {
+        type: String,
+        default: "LIBRARY_MANAGEMENT_SYSTEM_USER_AVATARS/etgjivnfislx9qvfta3d",
+      },
+      url: {
+        type: String,
+        default:
+          "https://res.cloudinary.com/dh2w4egzp/image/upload/v1752499819/LIBRARY_MANAGEMENT_SYSTEM_USER_AVATARS/etgjivnfislx9qvfta3d.jpg",
+      },
     },
     verificationCode: String,
     verificationCodeExpire: Date,

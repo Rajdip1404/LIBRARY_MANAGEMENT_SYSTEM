@@ -136,6 +136,8 @@ export const addBook = catchAsyncErrors(async (req, res, next) => {
     edition,
   } = req.body;
 
+  console.log(req.body);
+
   // ✅ Parse rentalPrice (since it's sent as a JSON string via FormData)
   try {
     rentalPrice = JSON.parse(rentalPrice);
@@ -378,6 +380,55 @@ export const updateBook = catchAsyncErrors(async (req, res, next) => {
         )
       );
     }
+  }
+
+  // Handle image update
+  // console.log(req.body);
+  if (req.files && req.files.image) {
+    const image = req.files.image;
+
+    const allowedFormats = [
+      "image/jpeg",
+      "image/png",
+      "image/jpg",
+      "image/webp",
+    ];
+    if (!allowedFormats.includes(image.mimetype)) {
+      return next(new ErrorHandler("Please upload a valid image file", 400));
+    }
+
+    // Fetch existing book to delete old image if needed
+    const existingBook = await Book.findById(bookId);
+    if (!existingBook) {
+      return next(new ErrorHandler("Book not found", 404));
+    }
+
+    // Delete old image from Cloudinary
+    if (
+      existingBook.bookImage &&
+      existingBook.bookImage.public_id &&
+      existingBook.bookImage.public_id !== "default-book-image"
+    ) {
+      await cloudinary.uploader.destroy(existingBook.bookImage.public_id);
+    }
+
+    // Upload new image
+    const cloudinaryResponse = await cloudinary.uploader.upload(
+      image.tempFilePath,
+      {
+        folder: "LIBRARY_MANAGEMENT_SYSTEM_BOOK_IMAGES",
+      }
+    );
+
+    if (cloudinaryResponse.error) {
+      console.error("Cloudinary upload error:", cloudinaryResponse.error);
+      return next(new ErrorHandler("Failed to upload image", 500));
+    }
+
+    updateData.bookImage = {
+      public_id: cloudinaryResponse.public_id,
+      url: cloudinaryResponse.secure_url,
+    };
   }
 
   // Perform update

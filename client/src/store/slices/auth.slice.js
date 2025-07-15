@@ -299,12 +299,12 @@ export const updatePassword = (data) => async (dispatch) => {
   dispatch(authSlice.actions.updatePasswordRequest());
   try {
     const response = await axios.put(
-      `${API_URL}/api/auth/update-password`,
+      `${API_URL}/api/auth/update-credentials`,
       data,
       {
         withCredentials: true,
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "multipart/form-data",
         },
       }
     );

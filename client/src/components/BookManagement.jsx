@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 import {
-  BookA,
   NotebookPen,
   Eye,
   Edit2,
   BookOpen,
   Trash2,
-  Trash,
 } from "lucide-react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
@@ -18,7 +16,7 @@ import {
   toggleRecordBookPopup,
   toggleUpdateBookPopup,
   toggleDeleteBookPopup,
-} from "../store/slices/popUp.slice";
+} from "../store/slices/popup.slice";
 import { toast } from "react-toastify";
 import { fetchAllBooks, resetBookSlice } from "../store/slices/book.slice";
 import {
@@ -234,120 +232,128 @@ const BookManagement = () => {
         </header>
 
         {/* Table */}
-        {books && books.length > 0 ? (
-          <div className="mt-6 overflow-auto bg-white rounded-md shadow-lg">
-            <table className="min-w-full border-collapse p-4 overflow-auto">
-              <thead>
-                <tr>
-                  <th className="px-4 py-2 text-left">ID</th>
-                  <th className="px-4 py-2 text-left">Name</th>
-                  <th className="px-4 py-2 text-left">Author</th>
-                  {isAuthenticated &&
-                    (user.role === "Admin" || user.role === "Librarian") && (
-                      <th className="px-4 py-2 text-left">Quantity</th>
-                    )}
-                  <th className="px-4 py-2 text-left">Price</th>
-                  {isAuthenticated && user.role === "User" && (
-                    <th className="px-4 py-2 text-left">Availability</th>
-                  )}
-                  {isAuthenticated &&
-                    (user.role === "Admin" || user.role === "Librarian") && (
-                      <th className="px-4 py-2 text-left">Record Book</th>
-                    )}
-                  {isAuthenticated &&
-                    (user.role === "Admin" || user.role === "Librarian") && (
-                      <th className="px-4 py-2 text-left">Update Book</th>
-                    )}
-                  <th className="px-4 py-2 text-left">View Book</th>
-                  {isAuthenticated && user.role === "User" && (
-                    <th className="px-4 py-2 text-left">Borrow Book</th>
-                  )}
-                  {isAuthenticated &&
-                    (user.role === "Admin" || user.role === "Librarian") && (
-                      <th className="px-4 py-2 text-left">Delete?</th>
-                    )}
-                </tr>
-              </thead>
-              <tbody>
-                {searchedBooks.map((book, index) => (
-                  <tr
-                    key={book._id}
-                    className={
-                      (index + 1) % 2 === 0
-                        ? "bg-gray-50 hover:bg-gray-100"
-                        : "hover:bg-gray-100"
-                    }
-                  >
-                    <td className="px-4 py-2">{index + 1}</td>
-                    <td className="px-4 py-2 max-w-[200px] min-w-[100px] truncate whitespace-nowrap overflow-hidde">
-                      {book.title}
-                    </td>
-                    <td className="px-4 py-2 max-w-[180px] overflow-hidden text-ellipsis whitespace-nowrap">
-                      {book.author}
-                    </td>
+        <div className="w-full overflow-x-auto max-h-[80vh] overflow-y-auto rounded-md">
+          {books && books.length > 0 ? (
+            <div className="mt-6 bg-white rounded-md shadow-lg">
+              <table className="min-w-full border-collapse p-4">
+                <thead>
+                  <tr>
+                    <th className="px-4 py-2 text-left">ID</th>
+                    <th className="px-4 py-2 text-left">Name</th>
+                    <th className="px-4 py-2 text-left">Author</th>
                     {isAuthenticated &&
                       (user.role === "Admin" || user.role === "Librarian") && (
-                        <td className="px-4 py-2">{book.quantity}</td>
+                        <th className="px-4 py-2 text-left">Quantity</th>
                       )}
-                    <td className="px-4 py-2">
-                      ₹
-                      {book.rentalPrice && book.rentalPrice["7"]
-                        ? book.rentalPrice["7"]
-                        : "N/A"}
-                    </td>
-
+                    <th className="px-4 py-2 text-left">Price</th>
                     {isAuthenticated && user.role === "User" && (
-                      <td className="px-4 py-2">
-                        {book.availability ? "Available" : "Not Available"}
-                      </td>
+                      <th className="px-4 py-2 text-left">Availability</th>
                     )}
                     {isAuthenticated &&
                       (user.role === "Admin" || user.role === "Librarian") && (
-                        <td className="px-10 py-3">
-                          <NotebookPen
-                            onClick={() => openRecordBookPopup(book._id)}
-                          />
-                        </td>
+                        <th className="px-4 py-2 text-left">Record Book</th>
                       )}
                     {isAuthenticated &&
                       (user.role === "Admin" || user.role === "Librarian") && (
-                        <td className="px-10 py-3">
-                          <Edit2
-                            onClick={() => openUpdateBookPopup(book._id)}
-                          />
-                        </td>
+                        <th className="px-4 py-2 text-left">Update Book</th>
                       )}
-                    <td className="px-10 py-3">
-                      <Eye onClick={() => openReadPopup(book._id)} />
-                    </td>
+                    <th className="px-4 py-2 text-left">View Book</th>
                     {isAuthenticated && user.role === "User" && (
-                      <td className="px-10 py-3">
-                        <button
-                          className="bg-black text-white px-2 py-1 shadow-md"
-                          onClick={() => openBorrowBookPopup(book._id)}
-                        >
-                          <BookOpen />
-                        </button>
-                      </td>
+                      <th className="px-4 py-2 text-left">Borrow Book</th>
                     )}
                     {isAuthenticated &&
                       (user.role === "Admin" || user.role === "Librarian") && (
-                        <td className="px-9 py-3">
-                          <Trash2
-                            onClick={() => openDeleteBookPopup(book._id)}
-                          />
-                        </td>
+                        <th className="px-4 py-2 text-left">Delete?</th>
                       )}
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        ) : (
-          <div className="flex items-center justify-center h-64">
-            <p className="text-black text-4xl font-bold">No books available</p>
-          </div>
-        )}
+                </thead>
+                <tbody className="divide-y divide-gray-200">
+                  {searchedBooks.map((book, index) => (
+                    <tr
+                      key={book._id}
+                      className={
+                        (index + 1) % 2 === 0
+                          ? "bg-gray-50 hover:bg-gray-100"
+                          : "hover:bg-gray-100"
+                      }
+                    >
+                      <td className="px-4 py-2">{index + 1}</td>
+                      <td className="px-4 py-2 max-w-[200px] min-w-[100px] truncate whitespace-nowrap overflow-hidde">
+                        {book.title}
+                      </td>
+                      <td className="px-4 py-2 max-w-[180px] overflow-hidden text-ellipsis whitespace-nowrap">
+                        {book.author}
+                      </td>
+                      {isAuthenticated &&
+                        (user.role === "Admin" ||
+                          user.role === "Librarian") && (
+                          <td className="px-4 py-2">{book.quantity}</td>
+                        )}
+                      <td className="px-4 py-2">
+                        ₹
+                        {book.rentalPrice && book.rentalPrice["7"]
+                          ? book.rentalPrice["7"]
+                          : "N/A"}
+                      </td>
+
+                      {isAuthenticated && user.role === "User" && (
+                        <td className="px-4 py-2">
+                          {book.availability ? "Available" : "Not Available"}
+                        </td>
+                      )}
+                      {isAuthenticated &&
+                        (user.role === "Admin" ||
+                          user.role === "Librarian") && (
+                          <td className="px-10 py-3">
+                            <NotebookPen
+                              onClick={() => openRecordBookPopup(book._id)}
+                            />
+                          </td>
+                        )}
+                      {isAuthenticated &&
+                        (user.role === "Admin" ||
+                          user.role === "Librarian") && (
+                          <td className="px-10 py-3">
+                            <Edit2
+                              onClick={() => openUpdateBookPopup(book._id)}
+                            />
+                          </td>
+                        )}
+                      <td className="px-10 py-3">
+                        <Eye onClick={() => openReadPopup(book._id)} />
+                      </td>
+                      {isAuthenticated && user.role === "User" && (
+                        <td className="px-10 py-3">
+                          <button
+                            className="bg-black text-white px-2 py-1 shadow-md"
+                            onClick={() => openBorrowBookPopup(book._id)}
+                          >
+                            <BookOpen />
+                          </button>
+                        </td>
+                      )}
+                      {isAuthenticated &&
+                        (user.role === "Admin" ||
+                          user.role === "Librarian") && (
+                          <td className="px-9 py-3">
+                            <Trash2
+                              onClick={() => openDeleteBookPopup(book._id)}
+                            />
+                          </td>
+                        )}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          ) : (
+            <div className="flex items-center justify-center h-64">
+              <p className="text-black text-4xl font-bold">
+                No books available
+              </p>
+            </div>
+          )}
+        </div>
       </main>
 
       {addBookPopup && <AddBookPopup />}

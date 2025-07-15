@@ -60,7 +60,9 @@ const Header = () => {
             src={settingIcon}
             alt="settingIcon"
             className="w-8 h-8 cursor-pointer"
-            onClick={() => dispatch(toggleSettingPopup())}
+            onClick={() => {
+              dispatch(toggleSettingPopup())
+            }}
           />
         </div>
       </header>

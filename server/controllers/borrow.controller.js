@@ -94,7 +94,7 @@ export const requestBorrowBook = catchAsyncErrors(async (req, res, next) => {
     return next(new ErrorHandler("Book is not available", 400));
 
   const isAlreadyBorrowed = user.borrowedBooks.find(
-    (borrow) => borrow.bookId?.toString() === bookId && !borrow.returned
+    (borrow) => borrow.book?.toString() === bookId && !borrow.returned
   );
   if (isAlreadyBorrowed)
     return next(new ErrorHandler("Book is already borrowed", 400));

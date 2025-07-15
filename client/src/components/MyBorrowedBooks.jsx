@@ -85,52 +85,60 @@ const MyBorrowedBooks = () => {
           </button>
         </header>
 
-        {booksToDisplay && booksToDisplay.length > 0 ? (
-          <div className="mt-6 overflow-auto bg-white rounded-md shadow-lg">
-            <table className="min-w-full border-collapse p-4">
-              <thead>
-                <tr className="bg-gray-200">
-                  <th className="px-4 py-2 text-left">ID</th>
-                  <th className="px-4 py-2 text-left">Book Title</th>
-                  <th className="px-4 py-2 text-left"> Date & Time</th>
-                  <th className="px-4 py-2 text-left">Due Date</th>
-                  <th className="px-4 py-2 text-left">Returned</th>
-                  <th className="px-4 py-2 text-left">View</th>
-                </tr>
-              </thead>
-
-              <tbody>
-                {booksToDisplay.map((book, index) => (
-                  <tr
-                    key={index}
-                    className={`hover:bg-gray-100 transition-colors duration-300 ${
-                      (index + 1) % 2 === 0 ? "bg-gray-50" : ""
-                    }`}
-                  >
-                    <td className="px-4 py-2">{index + 1}</td>
-                    <td className="px-4 py-2">{book.bookTitle}</td>
-                    <td className="px-4 py-2">{formatDate(book.borrowDate)}</td>
-                    <td className="px-4 py-2">{formatDate(book.dueDate)}</td>
-                    <td className="px-4 py-2">
-                      {book.returned ? "Yes" : "No"}
-                    </td>
-                    <td className="px-4 py-2 flex justify-centertext-center gap-2">
-                      <BookA
-                        onClick={() => openReadPopup(book.bookId)}
-                        className="text-blue-500 hover:underline"
-                      />
-                      View
-                    </td>
+        <div className="w-full overflow-x-auto max-h-[80vh] overflow-y-auto rounded-md">
+          {booksToDisplay && booksToDisplay.length > 0 ? (
+            <div className="mt-6 overflow-auto bg-white rounded-md shadow-lg">
+              <table className="min-w-full border-collapse p-4">
+                <thead>
+                  <tr className="bg-gray-200">
+                    <th className="px-4 py-2 text-left">ID</th>
+                    <th className="px-4 py-2 text-left">Book Title</th>
+                    <th className="px-4 py-2 text-left"> Date & Time</th>
+                    <th className="px-4 py-2 text-left">Due Date</th>
+                    <th className="px-4 py-2 text-left">Returned</th>
+                    <th className="px-4 py-2 text-left">View</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        ) : filter === "returned" ? (
-          <h3 className="text-4xl mt-40 font-bold text-center">No returned books found</h3>
-        ) : (
-          <h3 className="text-4xl mt-40 font-bold text-center">No borrowed books found</h3>
-        )}
+                </thead>
+
+                <tbody className="divide-y divide-gray-200">
+                  {booksToDisplay.map((book, index) => (
+                    <tr
+                      key={index}
+                      className={`hover:bg-gray-100 transition-colors duration-300 ${
+                        (index + 1) % 2 === 0 ? "bg-gray-50" : ""
+                      }`}
+                    >
+                      <td className="px-4 py-2">{index + 1}</td>
+                      <td className="px-4 py-2">{book.bookTitle}</td>
+                      <td className="px-4 py-2">
+                        {formatDate(book.borrowDate)}
+                      </td>
+                      <td className="px-4 py-2">{formatDate(book.dueDate)}</td>
+                      <td className="px-4 py-2">
+                        {book.returned ? "Yes" : "No"}
+                      </td>
+                      <td className="px-4 py-2 flex justify-centertext-center gap-2">
+                        <BookA
+                          onClick={() => openReadPopup(book.bookId)}
+                          className="text-blue-500 hover:underline"
+                        />
+                        View
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          ) : filter === "returned" ? (
+            <h3 className="text-4xl mt-40 font-bold text-center">
+              No returned books found
+            </h3>
+          ) : (
+            <h3 className="text-4xl mt-40 font-bold text-center">
+              No borrowed books found
+            </h3>
+          )}
+        </div>
       </main>
       {readBookPopup && <ReadBookPopup book={readBook} />}
     </>

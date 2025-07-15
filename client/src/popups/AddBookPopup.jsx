@@ -70,7 +70,7 @@ const AddBookPopup = () => {
           </button>
         </div>
 
-        <form onSubmit={handleAddBook} className="p-6 space-y-6">
+        <form onSubmit={handleAddBook} className="px-6 py-4 space-y-3">
           <div>
             <label className="block text-gray-700 font-semibold mb-1">
               Title
@@ -202,7 +202,7 @@ const AddBookPopup = () => {
           </div>
 
           {/* Quantity & Rental Prices */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid gap-4">
             <div>
               <label className="block text-gray-700 font-semibold mb-1">
                 Quantity
@@ -216,30 +216,35 @@ const AddBookPopup = () => {
               />
             </div>
 
-            <div className="space-y-2">
-              <label className="block text-gray-700 font-semibold">
+            <div>
+              <label className="block text-gray-700 font-semibold mb-2">
                 Rental Price (per duration)
               </label>
-              {["7", "14", "21", "28"].map((day) => (
-                <div key={day} className="flex items-center gap-2">
-                  <span className="w-14">{day}d:</span>
-                  <input
-                    type="number"
-                    value={rentalPrices[day]}
-                    onChange={(e) =>
-                      handleRentalPriceChange(day, e.target.value)
-                    }
-                    required
-                    placeholder={`₹ for ${day} days`}
-                    className="flex-1 border border-gray-300 rounded px-3 py-1 bg-gray-100"
-                  />
-                </div>
-              ))}
+              <div className="flex flex-wrap gap-4">
+                {["7", "14", "21", "28"].map((day) => (
+                  <div
+                    key={day}
+                    className="w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc(25%-0.75rem)] flex items-center gap-2"
+                  >
+                    <span className="w-8">{day}d:</span>
+                    <input
+                      type="number"
+                      value={rentalPrices[day]}
+                      onChange={(e) =>
+                        handleRentalPriceChange(day, e.target.value)
+                      }
+                      required
+                      placeholder={`₹ for ${day}d`}
+                      className="flex-1 border border-gray-300 w-10 rounded px-3 py-1 bg-gray-100"
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 
           {/* Submit */}
-          <div className="border-t pt-4 border-gray-200">
+          <div className="pt-4">
             <button
               type="submit"
               className="w-full bg-black text-white font-semibold py-2 rounded-lg hover:bg-gray-300 hover:text-black transition duration-200"

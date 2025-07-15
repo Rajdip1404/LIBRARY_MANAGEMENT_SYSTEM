@@ -7,6 +7,8 @@ const userSlice = createSlice({
     name: "user",
     initialState: {
         users: [],
+        admins: [],
+        librarians: [],
         loading: false,
     },
     reducers: {
@@ -18,6 +20,28 @@ const userSlice = createSlice({
             state.users = action.payload;
         },
         fetchAllUsersFailure: (state, action) => {
+            state.loading = false;
+            toast.error(action.payload);
+        },
+        fetchAllAdminsRequest: (state) => {
+            state.loading = true;
+        },
+        fetchAllAdminsSuccess: (state, action) => {
+            state.loading = false;
+            state.admins = action.payload;
+        },
+        fetchAllAdminsFailure: (state, action) => {
+            state.loading = false;
+            toast.error(action.payload);
+        },
+        fetchAllLibrariansRequest: (state) => {
+            state.loading = true;
+        },
+        fetchAllLibrariansSuccess: (state, action) => {
+            state.loading = false;
+            state.librarians = action.payload;
+        },
+        fetchAllLibrariansFailure: (state, action) => {
             state.loading = false;
             toast.error(action.payload);
         },
@@ -50,8 +74,31 @@ export const fetchAllUsers = () => async (dispatch) => {
         });
         dispatch(userSlice.actions.fetchAllUsersSuccess(response.data.users));
     } catch (error) {
-        console.log(error)
         dispatch(userSlice.actions.fetchAllUsersFailure(error.response.data.message));
+    }
+};
+
+export const fetchAllAdmins = () => async (dispatch) => {
+    dispatch(userSlice.actions.fetchAllAdminsRequest());
+    try {
+        const response = await axios.get(`${API_URL}/api/user/get-all-admins`, {
+          withCredentials: true,
+        });
+        dispatch(userSlice.actions.fetchAllAdminsSuccess(response.data.admins));
+    } catch (error) {
+        dispatch(userSlice.actions.fetchAllAdminsFailure(error.response.data.message));
+    }
+};
+
+export const fetchAllLibrarians = () => async (dispatch) => {
+    dispatch(userSlice.actions.fetchAllLibrariansRequest());
+    try {
+        const response = await axios.get(`${API_URL}/api/user/get-all-librarians`, {
+          withCredentials: true,
+        });
+        dispatch(userSlice.actions.fetchAllLibrariansSuccess(response.data.librarians));
+    } catch (error) {
+        dispatch(userSlice.actions.fetchAllLibrariansFailure(error.response.data.message));
     }
 };
 

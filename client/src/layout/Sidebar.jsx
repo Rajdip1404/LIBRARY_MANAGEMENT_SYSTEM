@@ -11,7 +11,7 @@ import { RiAdminFill } from "react-icons/ri";
 import { useDispatch, useSelector } from "react-redux";
 import {toast} from "react-toastify";
 import {logout, resetAuthSlice} from "../store/slices/auth.slice.js";
-import {toggleAddNewAdminPopup, toggleSettingPopup, toggleAddNewLibrarianPopup} from "../store/slices/popUp.slice.js";
+import {toggleAddNewAdminPopup, toggleSettingPopup, toggleAddNewLibrarianPopup} from "../store/slices/popup.slice.js";
 import AddNewAdmin from "../popups/AddNewAdmin.jsx";
 import SettingPopup from "../popups/SettingPopup.jsx";
 import AddNewLibrarian from "../popups/AddNewLibrarian.jsx";
@@ -64,14 +64,17 @@ const SideBar = ({ isSideBarOpen, setIsSideBarOpen, setSelectedComponent }) => {
           >
             <img src={bookIcon} alt="books" /> <span>Books</span>
           </button>
-          {isAuthenticated && user?.role === "Admin" && (
-            <>
+          {isAuthenticated &&
+            (user?.role === "Admin" || user?.role === "Librarian") && (
               <button
                 onClick={() => setSelectedComponent("Catalog")}
                 className="w-full py-2 font-medium bg-transparent rounded-md hover:cursor-pointer flex items-center space-x-2"
               >
                 <img src={catalogIcon} alt="catalog" /> <span>Catalog</span>
               </button>
+            )}
+          {isAuthenticated && user?.role === "Admin" && (
+            <>
               <button
                 onClick={() => setSelectedComponent("Users")}
                 className="w-full py-2 font-medium bg-transparent rounded-md hover:cursor-pointer flex items-center space-x-2"
@@ -88,7 +91,8 @@ const SideBar = ({ isSideBarOpen, setIsSideBarOpen, setSelectedComponent }) => {
                 onClick={() => dispatch(toggleAddNewLibrarianPopup())}
                 className="w-full py-2 font-medium bg-transparent rounded-md hover:cursor-pointer flex items-center space-x-2"
               >
-                <RiAdminFill className="w-6 h-6" /> <span>Add New Librarian</span>
+                <RiAdminFill className="w-6 h-6" />{" "}
+                <span>Add New Librarian</span>
               </button>
             </>
           )}
@@ -125,7 +129,7 @@ const SideBar = ({ isSideBarOpen, setIsSideBarOpen, setSelectedComponent }) => {
         />
       </aside>
       {addNewAdminPopup && <AddNewAdmin />}
-      {settingPopup && <SettingPopup />}
+      {settingPopup && <SettingPopup avatar={user?.avatar} />}
       {addNewLibrarianPopup && <AddNewLibrarian />}
     </>
   );

@@ -31,7 +31,7 @@ const Home = () => {
       case "Books":
         return <BookManagement />;
       case "Catalog":
-        return user?.role === "Admin" ? <Catalog /> : <UserDashboard />;
+        return (user?.role === "Admin" || user?.role === "Librarian") ? <Catalog /> : <UserDashboard />;
       case "Users":
         return user?.role === "Admin" ? <Users /> : <UserDashboard />;
       case "my-borrowed-books":
@@ -43,7 +43,7 @@ const Home = () => {
 
 
   return (
-    <div className="relative min-h-screen max-h-auto bg-gray-100 flex">
+    <div className="relative flex h-screen w-full overflow-hidden bg-gray-100">
       <Sidebar
         isSideBarOpen={isSideBarOpen}
         setIsSideBarOpen={setIsSideBarOpen}
@@ -56,7 +56,9 @@ const Home = () => {
           onClick={() => setIsSideBarOpen(!isSideBarOpen)}
         />
       </div>
-      <div className="flex-1 p-2 nd:ml-64 lg:ml-64">{renderComponent()}</div>
+      <div className="flex-1 p-2 overflow-y-auto h-full xl:ml-64 lg:ml-64">
+        {renderComponent()}
+      </div>
     </div>
   );
 };

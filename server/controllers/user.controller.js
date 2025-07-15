@@ -16,6 +16,28 @@ export const getAllUsers = catchAsyncErrors(async (req, res, next) => {
     });
 });
 
+export const getAllAdmin = catchAsyncErrors(async (req, res, next) => {
+    const admins = await User.find({
+        role: "Admin",
+        accountVerified: true
+    });
+    res.status(200).json({
+        success: true,
+        admins
+    });
+});
+
+export const getAllLibrarians = catchAsyncErrors(async (req, res, next) => {
+    const librarians = await User.find({
+        role: "Librarian",
+        accountVerified: true
+    });
+    res.status(200).json({
+        success: true,
+        librarians
+    });
+});
+
 export const registerNewAdmin = catchAsyncErrors(async (req, res, next) => {
   if (!req.files || Object.keys(req.files).length === 0) {
     return next(
@@ -55,7 +77,7 @@ export const registerNewAdmin = catchAsyncErrors(async (req, res, next) => {
   const cloudinaryResponse = await cloudinary.uploader.upload(
     avatar.tempFilePath,
     {
-      folder: "LIBRARY_MANAGEMENT_SYSTEM_ADMIN_AVATARS",
+      folder: "LIBRARY_MANAGEMENT_SYSTEM_USER_AVATARS",
     }
   );
 
@@ -125,7 +147,7 @@ export const registerNewLibrarian = catchAsyncErrors(async (req, res, next) => {
   const cloudinaryResponse = await cloudinary.uploader.upload(
     avatar.tempFilePath,
     {
-      folder: "LIBRARY_MANAGEMENT_SYSTEM_LIBRARIAN_AVATARS",
+      folder: "LIBRARY_MANAGEMENT_SYSTEM_USER_AVATARS",
     }
   );
 

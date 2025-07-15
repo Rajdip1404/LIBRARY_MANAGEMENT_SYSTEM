@@ -110,7 +110,7 @@ const UserDashboard = () => {
               knowledge."
             </h4>
             <p className="text-gray-700 text-sm sm:text-lg absolute right-[35px] sm:right-[50px] bottom-[35px] sm:bottom-[35px]">
-              - BookWorm Team
+              - LibraFlow Team
             </p>
           </div>
         </div>

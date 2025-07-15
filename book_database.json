@@ -1,0 +1,1122 @@
+[
+  {
+    "title": "Dune",
+    "author": "Frank Herbert",
+    "description": "An epic science fiction saga set in a desert world.",
+    "rentalPrice": "{\"7\": \"29\", \"14\": \"38\", \"21\": \"65\", \"28\": \"82\"}",
+    "category": "Science Fiction",
+    "quantity": "10",
+    "publicationYear": "1983",
+    "edition": "1st"
+  },
+  {
+    "title": "Ender's Game",
+    "author": "Orson Scott Card",
+    "description": "A young genius trained through games to save the world.",
+    "rentalPrice": "{\"7\": \"22\", \"14\": \"47\", \"21\": \"73\", \"28\": \"95\"}",
+    "category": "Science Fiction",
+    "quantity": "10",
+    "publicationYear": "2021",
+    "edition": "1st"
+  },
+  {
+    "title": "Neuromancer",
+    "author": "William Gibson",
+    "description": "A cyberpunk classic that pioneered digital culture.",
+    "rentalPrice": "{\"7\": \"18\", \"14\": \"47\", \"21\": \"73\", \"28\": \"75\"}",
+    "category": "Science Fiction",
+    "quantity": "10",
+    "publicationYear": "1960",
+    "edition": "1st"
+  },
+  {
+    "title": "Foundation",
+    "author": "Isaac Asimov",
+    "description": "A mathematician predicts the fall of civilization.",
+    "rentalPrice": "{\"7\": \"19\", \"14\": \"45\", \"21\": \"56\", \"28\": \"80\"}",
+    "category": "Science Fiction",
+    "quantity": "10",
+    "publicationYear": "1941",
+    "edition": "1st"
+  },
+  {
+    "title": "Snow Crash",
+    "author": "Neal Stephenson",
+    "description": "A futuristic cyber adventure in a virtual world.",
+    "rentalPrice": "{\"7\": \"31\", \"14\": \"52\", \"21\": \"67\", \"28\": \"82\"}",
+    "category": "Science Fiction",
+    "quantity": "10",
+    "publicationYear": "2016",
+    "edition": "1st"
+  },
+  {
+    "title": "The Martian",
+    "author": "Andy Weir",
+    "description": "A stranded astronaut must survive on Mars.",
+    "rentalPrice": "{\"7\": \"29\", \"14\": \"40\", \"21\": \"57\", \"28\": \"87\"}",
+    "category": "Science Fiction",
+    "quantity": "10",
+    "publicationYear": "1980",
+    "edition": "1st"
+  },
+  {
+    "title": "Brave New World",
+    "author": "Aldous Huxley",
+    "description": "A dystopian future of genetic engineering.",
+    "rentalPrice": "{\"7\": \"20\", \"14\": \"35\", \"21\": \"70\", \"28\": \"90\"}",
+    "category": "Science Fiction",
+    "quantity": "10",
+    "publicationYear": "1947",
+    "edition": "1st"
+  },
+  {
+    "title": "Hyperion",
+    "author": "Dan Simmons",
+    "description": "Pilgrims journey to meet a mysterious creature.",
+    "rentalPrice": "{\"7\": \"25\", \"14\": \"37\", \"21\": \"66\", \"28\": \"85\"}",
+    "category": "Science Fiction",
+    "quantity": "10",
+    "publicationYear": "1971",
+    "edition": "1st"
+  },
+  {
+    "title": "Clean Code",
+    "author": "Robert C. Martin",
+    "description": "A handbook of agile software craftsmanship.",
+    "rentalPrice": "{\"7\": \"23\", \"14\": \"41\", \"21\": \"56\", \"28\": \"79\"}",
+    "category": "Technology",
+    "quantity": "10",
+    "publicationYear": "2004",
+    "edition": "1st"
+  },
+  {
+    "title": "The Pragmatic Programmer",
+    "author": "Andrew Hunt & David Thomas",
+    "description": "Tips for effective software development.",
+    "rentalPrice": "{\"7\": \"24\", \"14\": \"47\", \"21\": \"69\", \"28\": \"75\"}",
+    "category": "Technology",
+    "quantity": "10",
+    "publicationYear": "1984",
+    "edition": "1st"
+  },
+  {
+    "title": "Code",
+    "author": "Charles Petzold",
+    "description": "Explains the inner workings of computers.",
+    "rentalPrice": "{\"7\": \"27\", \"14\": \"52\", \"21\": \"68\", \"28\": \"79\"}",
+    "category": "Technology",
+    "quantity": "10",
+    "publicationYear": "2021",
+    "edition": "1st"
+  },
+  {
+    "title": "Design Patterns",
+    "author": "Erich Gamma et al.",
+    "description": "Elements of reusable object-oriented software.",
+    "rentalPrice": "{\"7\": \"18\", \"14\": \"45\", \"21\": \"67\", \"28\": \"90\"}",
+    "category": "Technology",
+    "quantity": "10",
+    "publicationYear": "1947",
+    "edition": "1st"
+  },
+  {
+    "title": "Structure and Interpretation of Computer Programs",
+    "author": "Harold Abelson",
+    "description": "Core concepts in computer science.",
+    "rentalPrice": "{\"7\": \"21\", \"14\": \"39\", \"21\": \"75\", \"28\": \"82\"}",
+    "category": "Technology",
+    "quantity": "10",
+    "publicationYear": "2005",
+    "edition": "1st"
+  },
+  {
+    "title": "The Mythical Man-Month",
+    "author": "Frederick P. Brooks Jr.",
+    "description": "Essays on software project management.",
+    "rentalPrice": "{\"7\": \"21\", \"14\": \"41\", \"21\": \"55\", \"28\": \"93\"}",
+    "category": "Technology",
+    "quantity": "10",
+    "publicationYear": "1961",
+    "edition": "1st"
+  },
+  {
+    "title": "Introduction to Algorithms",
+    "author": "Cormen et al.",
+    "description": "The definitive algorithm textbook.",
+    "rentalPrice": "{\"7\": \"27\", \"14\": \"38\", \"21\": \"72\", \"28\": \"80\"}",
+    "category": "Technology",
+    "quantity": "10",
+    "publicationYear": "1942",
+    "edition": "1st"
+  },
+  {
+    "title": "Don't Make Me Think",
+    "author": "Steve Krug",
+    "description": "Web usability insights for designers.",
+    "rentalPrice": "{\"7\": \"25\", \"14\": \"39\", \"21\": \"72\", \"28\": \"89\"}",
+    "category": "Technology",
+    "quantity": "10",
+    "publicationYear": "1975",
+    "edition": "1st"
+  },
+  {
+    "title": "Pedagogy of the Oppressed",
+    "author": "Paulo Freire",
+    "description": "Critical theory in education.",
+    "rentalPrice": "{\"7\": \"23\", \"14\": \"43\", \"21\": \"69\", \"28\": \"80\"}",
+    "category": "Education",
+    "quantity": "10",
+    "publicationYear": "1980",
+    "edition": "1st"
+  },
+  {
+    "title": "Mindset",
+    "author": "Carol S. Dweck",
+    "description": "Growth vs. fixed mindsets in learning.",
+    "rentalPrice": "{\"7\": \"23\", \"14\": \"50\", \"21\": \"72\", \"28\": \"85\"}",
+    "category": "Education",
+    "quantity": "10",
+    "publicationYear": "1976",
+    "edition": "1st"
+  },
+  {
+    "title": "The Element",
+    "author": "Ken Robinson",
+    "description": "How finding your passion changes everything.",
+    "rentalPrice": "{\"7\": \"24\", \"14\": \"42\", \"21\": \"59\", \"28\": \"90\"}",
+    "category": "Education",
+    "quantity": "10",
+    "publicationYear": "2015",
+    "edition": "1st"
+  },
+  {
+    "title": "Teach Like a Champion",
+    "author": "Doug Lemov",
+    "description": "49 techniques that put students on the path to college.",
+    "rentalPrice": "{\"7\": \"24\", \"14\": \"50\", \"21\": \"58\", \"28\": \"92\"}",
+    "category": "Education",
+    "quantity": "10",
+    "publicationYear": "1974",
+    "edition": "1st"
+  },
+  {
+    "title": "What the Best College Teachers Do",
+    "author": "Ken Bain",
+    "description": "Traits of effective educators.",
+    "rentalPrice": "{\"7\": \"32\", \"14\": \"41\", \"21\": \"68\", \"28\": \"92\"}",
+    "category": "Education",
+    "quantity": "10",
+    "publicationYear": "1950",
+    "edition": "1st"
+  },
+  {
+    "title": "Grit",
+    "author": "Angela Duckworth",
+    "description": "Why passion and perseverance matter.",
+    "rentalPrice": "{\"7\": \"30\", \"14\": \"49\", \"21\": \"62\", \"28\": \"87\"}",
+    "category": "Education",
+    "quantity": "10",
+    "publicationYear": "1986",
+    "edition": "1st"
+  },
+  {
+    "title": "The Courage to Teach",
+    "author": "Parker J. Palmer",
+    "description": "Exploring the inner landscape of a teacher.",
+    "rentalPrice": "{\"7\": \"19\", \"14\": \"45\", \"21\": \"69\", \"28\": \"77\"}",
+    "category": "Education",
+    "quantity": "10",
+    "publicationYear": "2005",
+    "edition": "1st"
+  },
+  {
+    "title": "Make It Stick",
+    "author": "Peter C. Brown",
+    "description": "The science of successful learning.",
+    "rentalPrice": "{\"7\": \"30\", \"14\": \"50\", \"21\": \"67\", \"28\": \"86\"}",
+    "category": "Education",
+    "quantity": "10",
+    "publicationYear": "1977",
+    "edition": "1st"
+  },
+  {
+    "title": "Guns, Germs, and Steel",
+    "author": "Jared Diamond",
+    "description": "The fates of human societies.",
+    "rentalPrice": "{\"7\": \"27\", \"14\": \"38\", \"21\": \"73\", \"28\": \"88\"}",
+    "category": "History",
+    "quantity": "10",
+    "publicationYear": "2000",
+    "edition": "1st"
+  },
+  {
+    "title": "The Silk Roads",
+    "author": "Peter Frankopan",
+    "description": "A new history of the world.",
+    "rentalPrice": "{\"7\": \"26\", \"14\": \"37\", \"21\": \"60\", \"28\": \"77\"}",
+    "category": "History",
+    "quantity": "10",
+    "publicationYear": "1999",
+    "edition": "1st"
+  },
+  {
+    "title": "A People's History of the United States",
+    "author": "Howard Zinn",
+    "description": "History from the perspective of the marginalized.",
+    "rentalPrice": "{\"7\": \"30\", \"14\": \"40\", \"21\": \"55\", \"28\": \"93\"}",
+    "category": "History",
+    "quantity": "10",
+    "publicationYear": "1995",
+    "edition": "1st"
+  },
+  {
+    "title": "The Wright Brothers",
+    "author": "David McCullough",
+    "description": "Biography of the aviation pioneers.",
+    "rentalPrice": "{\"7\": \"30\", \"14\": \"48\", \"21\": \"65\", \"28\": \"90\"}",
+    "category": "History",
+    "quantity": "10",
+    "publicationYear": "1980",
+    "edition": "1st"
+  },
+  {
+    "title": "Team of Rivals",
+    "author": "Doris Kearns Goodwin",
+    "description": "The political genius of Abraham Lincoln.",
+    "rentalPrice": "{\"7\": \"18\", \"14\": \"37\", \"21\": \"68\", \"28\": \"83\"}",
+    "category": "History",
+    "quantity": "10",
+    "publicationYear": "1980",
+    "edition": "1st"
+  },
+  {
+    "title": "The History of the Ancient World",
+    "author": "Susan Wise Bauer",
+    "description": "Ancient civilizations in global context.",
+    "rentalPrice": "{\"7\": \"30\", \"14\": \"35\", \"21\": \"63\", \"28\": \"75\"}",
+    "category": "History",
+    "quantity": "10",
+    "publicationYear": "1995",
+    "edition": "1st"
+  },
+  {
+    "title": "SPQR",
+    "author": "Mary Beard",
+    "description": "A history of ancient Rome.",
+    "rentalPrice": "{\"7\": \"18\", \"14\": \"44\", \"21\": \"62\", \"28\": \"75\"}",
+    "category": "History",
+    "quantity": "10",
+    "publicationYear": "1960",
+    "edition": "1st"
+  },
+  {
+    "title": "Postwar",
+    "author": "Tony Judt",
+    "description": "A history of Europe since 1945.",
+    "rentalPrice": "{\"7\": \"23\", \"14\": \"38\", \"21\": \"64\", \"28\": \"82\"}",
+    "category": "History",
+    "quantity": "10",
+    "publicationYear": "1986",
+    "edition": "1st"
+  },
+  {
+    "title": "Steve Jobs",
+    "author": "Walter Isaacson",
+    "description": "The official biography of Apple\u2019s founder.",
+    "rentalPrice": "{\"7\": \"18\", \"14\": \"43\", \"21\": \"70\", \"28\": \"77\"}",
+    "category": "Biography",
+    "quantity": "10",
+    "publicationYear": "2008",
+    "edition": "1st"
+  },
+  {
+    "title": "Einstein: His Life and Universe",
+    "author": "Walter Isaacson",
+    "description": "A biography of the great physicist.",
+    "rentalPrice": "{\"7\": \"27\", \"14\": \"49\", \"21\": \"70\", \"28\": \"93\"}",
+    "category": "Biography",
+    "quantity": "10",
+    "publicationYear": "1962",
+    "edition": "1st"
+  },
+  {
+    "title": "Alexander Hamilton",
+    "author": "Ron Chernow",
+    "description": "A vivid portrait of the founding father.",
+    "rentalPrice": "{\"7\": \"32\", \"14\": \"44\", \"21\": \"72\", \"28\": \"88\"}",
+    "category": "Biography",
+    "quantity": "10",
+    "publicationYear": "1965",
+    "edition": "1st"
+  },
+  {
+    "title": "Leonardo da Vinci",
+    "author": "Walter Isaacson",
+    "description": "An exploration of his genius.",
+    "rentalPrice": "{\"7\": \"31\", \"14\": \"55\", \"21\": \"66\", \"28\": \"82\"}",
+    "category": "Biography",
+    "quantity": "10",
+    "publicationYear": "1944",
+    "edition": "1st"
+  },
+  {
+    "title": "Churchill: A Life",
+    "author": "Martin Gilbert",
+    "description": "Definitive life of Winston Churchill.",
+    "rentalPrice": "{\"7\": \"31\", \"14\": \"42\", \"21\": \"74\", \"28\": \"91\"}",
+    "category": "Biography",
+    "quantity": "10",
+    "publicationYear": "1997",
+    "edition": "1st"
+  },
+  {
+    "title": "Long Walk to Freedom",
+    "author": "Nelson Mandela",
+    "description": "Autobiography of the South African leader.",
+    "rentalPrice": "{\"7\": \"18\", \"14\": \"46\", \"21\": \"70\", \"28\": \"79\"}",
+    "category": "Biography",
+    "quantity": "10",
+    "publicationYear": "1988",
+    "edition": "1st"
+  },
+  {
+    "title": "The Diary of Frida Kahlo",
+    "author": "Frida Kahlo",
+    "description": "Illustrated personal journal.",
+    "rentalPrice": "{\"7\": \"29\", \"14\": \"47\", \"21\": \"71\", \"28\": \"75\"}",
+    "category": "Biography",
+    "quantity": "10",
+    "publicationYear": "1961",
+    "edition": "1st"
+  },
+  {
+    "title": "Becoming Steve Jobs",
+    "author": "Brent Schlender",
+    "description": "The evolution of a visionary.",
+    "rentalPrice": "{\"7\": \"20\", \"14\": \"44\", \"21\": \"62\", \"28\": \"91\"}",
+    "category": "Biography",
+    "quantity": "10",
+    "publicationYear": "2018",
+    "edition": "1st"
+  },
+  {
+    "title": "The Story of My Experiments with Truth",
+    "author": "Mahatma Gandhi",
+    "description": "The autobiography of a leader.",
+    "rentalPrice": "{\"7\": \"29\", \"14\": \"42\", \"21\": \"55\", \"28\": \"81\"}",
+    "category": "Autobiography",
+    "quantity": "10",
+    "publicationYear": "1948",
+    "edition": "1st"
+  },
+  {
+    "title": "I Am Malala",
+    "author": "Malala Yousafzai",
+    "description": "A Pakistani girl's fight for education.",
+    "rentalPrice": "{\"7\": \"26\", \"14\": \"46\", \"21\": \"72\", \"28\": \"76\"}",
+    "category": "Autobiography",
+    "quantity": "10",
+    "publicationYear": "1958",
+    "edition": "1st"
+  },
+  {
+    "title": "The Autobiography of Malcolm X",
+    "author": "Malcolm X",
+    "description": "Life story of a civil rights leader.",
+    "rentalPrice": "{\"7\": \"29\", \"14\": \"40\", \"21\": \"59\", \"28\": \"82\"}",
+    "category": "Autobiography",
+    "quantity": "10",
+    "publicationYear": "1995",
+    "edition": "1st"
+  },
+  {
+    "title": "Born a Crime",
+    "author": "Trevor Noah",
+    "description": "Stories from a South African childhood.",
+    "rentalPrice": "{\"7\": \"25\", \"14\": \"51\", \"21\": \"67\", \"28\": \"95\"}",
+    "category": "Autobiography",
+    "quantity": "10",
+    "publicationYear": "2001",
+    "edition": "1st"
+  },
+  {
+    "title": "Open",
+    "author": "Andre Agassi",
+    "description": "Revealing memoir of a tennis star.",
+    "rentalPrice": "{\"7\": \"30\", \"14\": \"43\", \"21\": \"57\", \"28\": \"77\"}",
+    "category": "Autobiography",
+    "quantity": "10",
+    "publicationYear": "1982",
+    "edition": "1st"
+  },
+  {
+    "title": "On Writing",
+    "author": "Stephen King",
+    "description": "A memoir of the craft.",
+    "rentalPrice": "{\"7\": \"21\", \"14\": \"38\", \"21\": \"55\", \"28\": \"85\"}",
+    "category": "Autobiography",
+    "quantity": "10",
+    "publicationYear": "1970",
+    "edition": "1st"
+  },
+  {
+    "title": "Dreams from My Father",
+    "author": "Barack Obama",
+    "description": "The early life of a future president.",
+    "rentalPrice": "{\"7\": \"18\", \"14\": \"35\", \"21\": \"64\", \"28\": \"79\"}",
+    "category": "Autobiography",
+    "quantity": "10",
+    "publicationYear": "1945",
+    "edition": "1st"
+  },
+  {
+    "title": "When Breath Becomes Air",
+    "author": "Paul Kalanithi",
+    "description": "A doctor's reflections on life and death.",
+    "rentalPrice": "{\"7\": \"24\", \"14\": \"53\", \"21\": \"73\", \"28\": \"95\"}",
+    "category": "Autobiography",
+    "quantity": "10",
+    "publicationYear": "1989",
+    "edition": "1st"
+  },
+  {
+    "title": "Harry Potter and the Sorcerer's Stone",
+    "author": "J.K. Rowling",
+    "description": "The beginning of the wizarding journey.",
+    "rentalPrice": "{\"7\": \"31\", \"14\": \"45\", \"21\": \"70\", \"28\": \"88\"}",
+    "category": "Fantasy",
+    "quantity": "10",
+    "publicationYear": "1994",
+    "edition": "1st"
+  },
+  {
+    "title": "The Hobbit",
+    "author": "J.R.R. Tolkien",
+    "description": "A hobbit's adventurous quest.",
+    "rentalPrice": "{\"7\": \"20\", \"14\": \"41\", \"21\": \"67\", \"28\": \"87\"}",
+    "category": "Fantasy",
+    "quantity": "10",
+    "publicationYear": "1991",
+    "edition": "1st"
+  },
+  {
+    "title": "The Name of the Wind",
+    "author": "Patrick Rothfuss",
+    "description": "The legend of a gifted young man.",
+    "rentalPrice": "{\"7\": \"23\", \"14\": \"47\", \"21\": \"63\", \"28\": \"83\"}",
+    "category": "Fantasy",
+    "quantity": "10",
+    "publicationYear": "2018",
+    "edition": "1st"
+  },
+  {
+    "title": "A Game of Thrones",
+    "author": "George R.R. Martin",
+    "description": "Epic battles for the Iron Throne.",
+    "rentalPrice": "{\"7\": \"19\", \"14\": \"53\", \"21\": \"75\", \"28\": \"81\"}",
+    "category": "Fantasy",
+    "quantity": "10",
+    "publicationYear": "1970",
+    "edition": "1st"
+  },
+  {
+    "title": "Mistborn",
+    "author": "Brandon Sanderson",
+    "description": "A world where ash falls from the sky.",
+    "rentalPrice": "{\"7\": \"25\", \"14\": \"47\", \"21\": \"64\", \"28\": \"83\"}",
+    "category": "Fantasy",
+    "quantity": "10",
+    "publicationYear": "1948",
+    "edition": "1st"
+  },
+  {
+    "title": "The Lies of Locke Lamora",
+    "author": "Scott Lynch",
+    "description": "Fantasy meets crime in a city of canals.",
+    "rentalPrice": "{\"7\": \"21\", \"14\": \"49\", \"21\": \"57\", \"28\": \"94\"}",
+    "category": "Fantasy",
+    "quantity": "10",
+    "publicationYear": "1943",
+    "edition": "1st"
+  },
+  {
+    "title": "The Way of Kings",
+    "author": "Brandon Sanderson",
+    "description": "Epic fantasy with deep world-building.",
+    "rentalPrice": "{\"7\": \"29\", \"14\": \"47\", \"21\": \"67\", \"28\": \"91\"}",
+    "category": "Fantasy",
+    "quantity": "10",
+    "publicationYear": "1941",
+    "edition": "1st"
+  },
+  {
+    "title": "Eragon",
+    "author": "Christopher Paolini",
+    "description": "A farm boy finds a dragon egg.",
+    "rentalPrice": "{\"7\": \"28\", \"14\": \"47\", \"21\": \"60\", \"28\": \"94\"}",
+    "category": "Fantasy",
+    "quantity": "10",
+    "publicationYear": "1960",
+    "edition": "1st"
+  },
+  {
+    "title": "Pride and Prejudice",
+    "author": "Jane Austen",
+    "description": "The classic love story of Elizabeth and Darcy.",
+    "rentalPrice": "{\"7\": \"29\", \"14\": \"35\", \"21\": \"56\", \"28\": \"82\"}",
+    "category": "Romance",
+    "quantity": "10",
+    "publicationYear": "1953",
+    "edition": "1st"
+  },
+  {
+    "title": "Me Before You",
+    "author": "Jojo Moyes",
+    "description": "A love story shaped by tragedy.",
+    "rentalPrice": "{\"7\": \"26\", \"14\": \"54\", \"21\": \"58\", \"28\": \"77\"}",
+    "category": "Romance",
+    "quantity": "10",
+    "publicationYear": "1982",
+    "edition": "1st"
+  },
+  {
+    "title": "The Notebook",
+    "author": "Nicholas Sparks",
+    "description": "An old man\u2019s tale of enduring love.",
+    "rentalPrice": "{\"7\": \"23\", \"14\": \"54\", \"21\": \"75\", \"28\": \"77\"}",
+    "category": "Romance",
+    "quantity": "10",
+    "publicationYear": "1970",
+    "edition": "1st"
+  },
+  {
+    "title": "Outlander",
+    "author": "Diana Gabaldon",
+    "description": "Time-travel romance across centuries.",
+    "rentalPrice": "{\"7\": \"18\", \"14\": \"36\", \"21\": \"62\", \"28\": \"83\"}",
+    "category": "Romance",
+    "quantity": "10",
+    "publicationYear": "1959",
+    "edition": "1st"
+  },
+  {
+    "title": "The Rosie Project",
+    "author": "Graeme Simsion",
+    "description": "Love through the lens of logic.",
+    "rentalPrice": "{\"7\": \"21\", \"14\": \"54\", \"21\": \"71\", \"28\": \"91\"}",
+    "category": "Romance",
+    "quantity": "10",
+    "publicationYear": "1982",
+    "edition": "1st"
+  },
+  {
+    "title": "It Ends with Us",
+    "author": "Colleen Hoover",
+    "description": "A powerful story of love and strength.",
+    "rentalPrice": "{\"7\": \"21\", \"14\": \"54\", \"21\": \"60\", \"28\": \"88\"}",
+    "category": "Romance",
+    "quantity": "10",
+    "publicationYear": "2017",
+    "edition": "1st"
+  },
+  {
+    "title": "The Time Traveler's Wife",
+    "author": "Audrey Niffenegger",
+    "description": "Love across time.",
+    "rentalPrice": "{\"7\": \"31\", \"14\": \"35\", \"21\": \"69\", \"28\": \"79\"}",
+    "category": "Romance",
+    "quantity": "10",
+    "publicationYear": "1950",
+    "edition": "1st"
+  },
+  {
+    "title": "Twilight",
+    "author": "Stephenie Meyer",
+    "description": "Love between a vampire and a human.",
+    "rentalPrice": "{\"7\": \"24\", \"14\": \"53\", \"21\": \"59\", \"28\": \"89\"}",
+    "category": "Romance",
+    "quantity": "10",
+    "publicationYear": "2007",
+    "edition": "1st"
+  },
+  {
+    "title": "The Shining",
+    "author": "Stephen King",
+    "description": "A haunted hotel and a descent into madness.",
+    "rentalPrice": "{\"7\": \"21\", \"14\": \"42\", \"21\": \"66\", \"28\": \"84\"}",
+    "category": "Horror",
+    "quantity": "10",
+    "publicationYear": "1995",
+    "edition": "1st"
+  },
+  {
+    "title": "Dracula",
+    "author": "Bram Stoker",
+    "description": "The classic vampire tale.",
+    "rentalPrice": "{\"7\": \"24\", \"14\": \"55\", \"21\": \"72\", \"28\": \"87\"}",
+    "category": "Horror",
+    "quantity": "10",
+    "publicationYear": "2015",
+    "edition": "1st"
+  },
+  {
+    "title": "Frankenstein",
+    "author": "Mary Shelley",
+    "description": "A scientist creates a living monster.",
+    "rentalPrice": "{\"7\": \"24\", \"14\": \"55\", \"21\": \"62\", \"28\": \"89\"}",
+    "category": "Horror",
+    "quantity": "10",
+    "publicationYear": "1989",
+    "edition": "1st"
+  },
+  {
+    "title": "Bird Box",
+    "author": "Josh Malerman",
+    "description": "Surviving in a world of invisible horrors.",
+    "rentalPrice": "{\"7\": \"29\", \"14\": \"49\", \"21\": \"70\", \"28\": \"89\"}",
+    "category": "Horror",
+    "quantity": "10",
+    "publicationYear": "1990",
+    "edition": "1st"
+  },
+  {
+    "title": "It",
+    "author": "Stephen King",
+    "description": "A group of kids confronts a deadly entity.",
+    "rentalPrice": "{\"7\": \"30\", \"14\": \"37\", \"21\": \"57\", \"28\": \"94\"}",
+    "category": "Horror",
+    "quantity": "10",
+    "publicationYear": "1964",
+    "edition": "1st"
+  },
+  {
+    "title": "The Haunting of Hill House",
+    "author": "Shirley Jackson",
+    "description": "Psychological horror in a spooky mansion.",
+    "rentalPrice": "{\"7\": \"26\", \"14\": \"48\", \"21\": \"63\", \"28\": \"83\"}",
+    "category": "Horror",
+    "quantity": "10",
+    "publicationYear": "1966",
+    "edition": "1st"
+  },
+  {
+    "title": "House of Leaves",
+    "author": "Mark Z. Danielewski",
+    "description": "A terrifying story within a story.",
+    "rentalPrice": "{\"7\": \"27\", \"14\": \"55\", \"21\": \"70\", \"28\": \"83\"}",
+    "category": "Horror",
+    "quantity": "10",
+    "publicationYear": "2016",
+    "edition": "1st"
+  },
+  {
+    "title": "The Exorcist",
+    "author": "William Peter Blatty",
+    "description": "A young girl possessed by a demon.",
+    "rentalPrice": "{\"7\": \"26\", \"14\": \"54\", \"21\": \"59\", \"28\": \"93\"}",
+    "category": "Horror",
+    "quantity": "10",
+    "publicationYear": "1998",
+    "edition": "1st"
+  },
+  {
+    "title": "Gone Girl",
+    "author": "Gillian Flynn",
+    "description": "A wife disappears\u2014was it murder?",
+    "rentalPrice": "{\"7\": \"18\", \"14\": \"44\", \"21\": \"55\", \"28\": \"92\"}",
+    "category": "Mystery",
+    "quantity": "10",
+    "publicationYear": "1943",
+    "edition": "1st"
+  },
+  {
+    "title": "The Girl with the Dragon Tattoo",
+    "author": "Stieg Larsson",
+    "description": "A hacker investigates a decades-old mystery.",
+    "rentalPrice": "{\"7\": \"20\", \"14\": \"48\", \"21\": \"59\", \"28\": \"79\"}",
+    "category": "Mystery",
+    "quantity": "10",
+    "publicationYear": "2021",
+    "edition": "1st"
+  },
+  {
+    "title": "Big Little Lies",
+    "author": "Liane Moriarty",
+    "description": "A dark secret behind suburban lives.",
+    "rentalPrice": "{\"7\": \"22\", \"14\": \"41\", \"21\": \"63\", \"28\": \"90\"}",
+    "category": "Mystery",
+    "quantity": "10",
+    "publicationYear": "1955",
+    "edition": "1st"
+  },
+  {
+    "title": "The Da Vinci Code",
+    "author": "Dan Brown",
+    "description": "A symbologist unravels a conspiracy.",
+    "rentalPrice": "{\"7\": \"32\", \"14\": \"54\", \"21\": \"55\", \"28\": \"92\"}",
+    "category": "Mystery",
+    "quantity": "10",
+    "publicationYear": "1994",
+    "edition": "1st"
+  },
+  {
+    "title": "And Then There Were None",
+    "author": "Agatha Christie",
+    "description": "Ten strangers, one killer.",
+    "rentalPrice": "{\"7\": \"18\", \"14\": \"54\", \"21\": \"56\", \"28\": \"75\"}",
+    "category": "Mystery",
+    "quantity": "10",
+    "publicationYear": "1984",
+    "edition": "1st"
+  },
+  {
+    "title": "The Cuckoo's Calling",
+    "author": "Robert Galbraith",
+    "description": "A model's death raises suspicions.",
+    "rentalPrice": "{\"7\": \"24\", \"14\": \"39\", \"21\": \"70\", \"28\": \"90\"}",
+    "category": "Mystery",
+    "quantity": "10",
+    "publicationYear": "1971",
+    "edition": "1st"
+  },
+  {
+    "title": "The Woman in White",
+    "author": "Wilkie Collins",
+    "description": "A mystery full of mistaken identity.",
+    "rentalPrice": "{\"7\": \"20\", \"14\": \"46\", \"21\": \"73\", \"28\": \"80\"}",
+    "category": "Mystery",
+    "quantity": "10",
+    "publicationYear": "2010",
+    "edition": "1st"
+  },
+  {
+    "title": "In the Woods",
+    "author": "Tana French",
+    "description": "A detective confronts a childhood trauma.",
+    "rentalPrice": "{\"7\": \"26\", \"14\": \"38\", \"21\": \"57\", \"28\": \"90\"}",
+    "category": "Mystery",
+    "quantity": "10",
+    "publicationYear": "1945",
+    "edition": "1st"
+  },
+  {
+    "title": "The Godfather",
+    "author": "Mario Puzo",
+    "description": "A saga of a powerful crime family.",
+    "rentalPrice": "{\"7\": \"23\", \"14\": \"44\", \"21\": \"73\", \"28\": \"78\"}",
+    "category": "Crime",
+    "quantity": "10",
+    "publicationYear": "1946",
+    "edition": "1st"
+  },
+  {
+    "title": "In Cold Blood",
+    "author": "Truman Capote",
+    "description": "True crime masterpiece.",
+    "rentalPrice": "{\"7\": \"20\", \"14\": \"50\", \"21\": \"62\", \"28\": \"76\"}",
+    "category": "Crime",
+    "quantity": "10",
+    "publicationYear": "1955",
+    "edition": "1st"
+  },
+  {
+    "title": "The Silence of the Lambs",
+    "author": "Thomas Harris",
+    "description": "A young agent consults a cannibal killer.",
+    "rentalPrice": "{\"7\": \"18\", \"14\": \"43\", \"21\": \"71\", \"28\": \"81\"}",
+    "category": "Crime",
+    "quantity": "10",
+    "publicationYear": "1978",
+    "edition": "1st"
+  },
+  {
+    "title": "The Girl on the Train",
+    "author": "Paula Hawkins",
+    "description": "A witness to a crime\u2014or is she?",
+    "rentalPrice": "{\"7\": \"29\", \"14\": \"38\", \"21\": \"67\", \"28\": \"81\"}",
+    "category": "Crime",
+    "quantity": "10",
+    "publicationYear": "1967",
+    "edition": "1st"
+  },
+  {
+    "title": "I Am Watching You",
+    "author": "Teresa Driscoll",
+    "description": "A stranger's warning unravels secrets.",
+    "rentalPrice": "{\"7\": \"26\", \"14\": \"45\", \"21\": \"57\", \"28\": \"79\"}",
+    "category": "Crime",
+    "quantity": "10",
+    "publicationYear": "1962",
+    "edition": "1st"
+  },
+  {
+    "title": "Sharp Objects",
+    "author": "Gillian Flynn",
+    "description": "A reporter returns to a town of murders.",
+    "rentalPrice": "{\"7\": \"19\", \"14\": \"53\", \"21\": \"62\", \"28\": \"76\"}",
+    "category": "Crime",
+    "quantity": "10",
+    "publicationYear": "1976",
+    "edition": "1st"
+  },
+  {
+    "title": "Before I Go to Sleep",
+    "author": "S.J. Watson",
+    "description": "A woman with no memory wakes daily to mystery.",
+    "rentalPrice": "{\"7\": \"23\", \"14\": \"46\", \"21\": \"60\", \"28\": \"89\"}",
+    "category": "Crime",
+    "quantity": "10",
+    "publicationYear": "2002",
+    "edition": "1st"
+  },
+  {
+    "title": "The Reversal",
+    "author": "Michael Connelly",
+    "description": "Legal drama with twists and turns.",
+    "rentalPrice": "{\"7\": \"31\", \"14\": \"48\", \"21\": \"62\", \"28\": \"84\"}",
+    "category": "Crime",
+    "quantity": "10",
+    "publicationYear": "1951",
+    "edition": "1st"
+  },
+  {
+    "title": "Atomic Habits",
+    "author": "James Clear",
+    "description": "Small changes, big results.",
+    "rentalPrice": "{\"7\": \"26\", \"14\": \"37\", \"21\": \"61\", \"28\": \"75\"}",
+    "category": "Self Improvement",
+    "quantity": "10",
+    "publicationYear": "1950",
+    "edition": "1st"
+  },
+  {
+    "title": "Deep Work",
+    "author": "Cal Newport",
+    "description": "Focus in a distracted world.",
+    "rentalPrice": "{\"7\": \"19\", \"14\": \"53\", \"21\": \"58\", \"28\": \"85\"}",
+    "category": "Self Improvement",
+    "quantity": "10",
+    "publicationYear": "2007",
+    "edition": "1st"
+  },
+  {
+    "title": "The 7 Habits of Highly Effective People",
+    "author": "Stephen R. Covey",
+    "description": "Timeless personal effectiveness.",
+    "rentalPrice": "{\"7\": \"20\", \"14\": \"35\", \"21\": \"71\", \"28\": \"78\"}",
+    "category": "Self Improvement",
+    "quantity": "10",
+    "publicationYear": "1985",
+    "edition": "1st"
+  },
+  {
+    "title": "Think and Grow Rich",
+    "author": "Napoleon Hill",
+    "description": "Success principles from the 20th century.",
+    "rentalPrice": "{\"7\": \"21\", \"14\": \"55\", \"21\": \"57\", \"28\": \"79\"}",
+    "category": "Self Improvement",
+    "quantity": "10",
+    "publicationYear": "1977",
+    "edition": "1st"
+  },
+  {
+    "title": "How to Win Friends and Influence People",
+    "author": "Dale Carnegie",
+    "description": "Master communication and leadership.",
+    "rentalPrice": "{\"7\": \"25\", \"14\": \"39\", \"21\": \"60\", \"28\": \"86\"}",
+    "category": "Self Improvement",
+    "quantity": "10",
+    "publicationYear": "1958",
+    "edition": "1st"
+  },
+  {
+    "title": "The Subtle Art of Not Giving a F*ck",
+    "author": "Mark Manson",
+    "description": "A counterintuitive guide to a good life.",
+    "rentalPrice": "{\"7\": \"32\", \"14\": \"55\", \"21\": \"72\", \"28\": \"88\"}",
+    "category": "Self Improvement",
+    "quantity": "10",
+    "publicationYear": "1968",
+    "edition": "1st"
+  },
+  {
+    "title": "You Are a Badass",
+    "author": "Jen Sincero",
+    "description": "Confidence-building with humor.",
+    "rentalPrice": "{\"7\": \"20\", \"14\": \"36\", \"21\": \"72\", \"28\": \"81\"}",
+    "category": "Self Improvement",
+    "quantity": "10",
+    "publicationYear": "1984",
+    "edition": "1st"
+  },
+  {
+    "title": "Can't Hurt Me",
+    "author": "David Goggins",
+    "description": "Mental toughness from Navy SEAL experience.",
+    "rentalPrice": "{\"7\": \"25\", \"14\": \"52\", \"21\": \"75\", \"28\": \"93\"}",
+    "category": "Self Improvement",
+    "quantity": "10",
+    "publicationYear": "1974",
+    "edition": "1st"
+  },
+  {
+    "title": "The Alchemist",
+    "author": "Paulo Coelho",
+    "description": "A journey of dreams and destiny.",
+    "rentalPrice": "{\"7\": \"31\", \"14\": \"44\", \"21\": \"74\", \"28\": \"94\"}",
+    "category": "Novel",
+    "quantity": "10",
+    "publicationYear": "1951",
+    "edition": "1st"
+  },
+  {
+    "title": "Catch-22",
+    "author": "Joseph Heller",
+    "description": "A satire on war and bureaucracy.",
+    "rentalPrice": "{\"7\": \"30\", \"14\": \"54\", \"21\": \"61\", \"28\": \"86\"}",
+    "category": "Novel",
+    "quantity": "10",
+    "publicationYear": "1987",
+    "edition": "1st"
+  },
+  {
+    "title": "One Hundred Years of Solitude",
+    "author": "Gabriel Garc\u00eda M\u00e1rquez",
+    "description": "A magical story of the Buend\u00eda family.",
+    "rentalPrice": "{\"7\": \"29\", \"14\": \"48\", \"21\": \"58\", \"28\": \"76\"}",
+    "category": "Novel",
+    "quantity": "10",
+    "publicationYear": "1965",
+    "edition": "1st"
+  },
+  {
+    "title": "Beloved",
+    "author": "Toni Morrison",
+    "description": "A ghost haunts a woman escaping slavery.",
+    "rentalPrice": "{\"7\": \"26\", \"14\": \"50\", \"21\": \"66\", \"28\": \"78\"}",
+    "category": "Novel",
+    "quantity": "10",
+    "publicationYear": "1989",
+    "edition": "1st"
+  },
+  {
+    "title": "The Road",
+    "author": "Cormac McCarthy",
+    "description": "A bleak journey through a post-apocalyptic world.",
+    "rentalPrice": "{\"7\": \"26\", \"14\": \"36\", \"21\": \"64\", \"28\": \"80\"}",
+    "category": "Novel",
+    "quantity": "10",
+    "publicationYear": "1981",
+    "edition": "1st"
+  },
+  {
+    "title": "Norwegian Wood",
+    "author": "Haruki Murakami",
+    "description": "A poignant tale of young love and loss.",
+    "rentalPrice": "{\"7\": \"23\", \"14\": \"45\", \"21\": \"55\", \"28\": \"83\"}",
+    "category": "Novel",
+    "quantity": "10",
+    "publicationYear": "1958",
+    "edition": "1st"
+  },
+  {
+    "title": "The Stranger",
+    "author": "Albert Camus",
+    "description": "An existential classic.",
+    "rentalPrice": "{\"7\": \"22\", \"14\": \"37\", \"21\": \"64\", \"28\": \"80\"}",
+    "category": "Novel",
+    "quantity": "10",
+    "publicationYear": "2001",
+    "edition": "1st"
+  },
+  {
+    "title": "Things Fall Apart",
+    "author": "Chinua Achebe",
+    "description": "Colonialism\u2019s impact on a tribal society.",
+    "rentalPrice": "{\"7\": \"31\", \"14\": \"50\", \"21\": \"75\", \"28\": \"81\"}",
+    "category": "Novel",
+    "quantity": "10",
+    "publicationYear": "2008",
+    "edition": "1st"
+  },
+  {
+    "title": "Charlotte's Web",
+    "author": "E.B. White",
+    "description": "A pig and a spider form an unlikely friendship.",
+    "rentalPrice": "{\"7\": \"21\", \"14\": \"41\", \"21\": \"61\", \"28\": \"82\"}",
+    "category": "Children",
+    "quantity": "10",
+    "publicationYear": "1991",
+    "edition": "1st"
+  },
+  {
+    "title": "Matilda",
+    "author": "Roald Dahl",
+    "description": "A gifted girl discovers her strength.",
+    "rentalPrice": "{\"7\": \"30\", \"14\": \"44\", \"21\": \"69\", \"28\": \"87\"}",
+    "category": "Children",
+    "quantity": "10",
+    "publicationYear": "1959",
+    "edition": "1st"
+  },
+  {
+    "title": "The Cat in the Hat",
+    "author": "Dr. Seuss",
+    "description": "A mischievous cat causes mayhem.",
+    "rentalPrice": "{\"7\": \"28\", \"14\": \"46\", \"21\": \"56\", \"28\": \"92\"}",
+    "category": "Children",
+    "quantity": "10",
+    "publicationYear": "1980",
+    "edition": "1st"
+  },
+  {
+    "title": "Where the Wild Things Are",
+    "author": "Maurice Sendak",
+    "description": "A boy rules a world of monsters.",
+    "rentalPrice": "{\"7\": \"21\", \"14\": \"50\", \"21\": \"74\", \"28\": \"93\"}",
+    "category": "Children",
+    "quantity": "10",
+    "publicationYear": "1963",
+    "edition": "1st"
+  },
+  {
+    "title": "Goodnight Moon",
+    "author": "Margaret Wise Brown",
+    "description": "A bedtime classic.",
+    "rentalPrice": "{\"7\": \"32\", \"14\": \"43\", \"21\": \"55\", \"28\": \"87\"}",
+    "category": "Children",
+    "quantity": "10",
+    "publicationYear": "1984",
+    "edition": "1st"
+  },
+  {
+    "title": "The Very Hungry Caterpillar",
+    "author": "Eric Carle",
+    "description": "A caterpillar eats through the week.",
+    "rentalPrice": "{\"7\": \"29\", \"14\": \"38\", \"21\": \"64\", \"28\": \"77\"}",
+    "category": "Children",
+    "quantity": "10",
+    "publicationYear": "1955",
+    "edition": "1st"
+  },
+  {
+    "title": "Winnie-the-Pooh",
+    "author": "A.A. Milne",
+    "description": "Adventures in the Hundred Acre Wood.",
+    "rentalPrice": "{\"7\": \"32\", \"14\": \"42\", \"21\": \"60\", \"28\": \"78\"}",
+    "category": "Children",
+    "quantity": "10",
+    "publicationYear": "1952",
+    "edition": "1st"
+  },
+  {
+    "title": "Diary of a Wimpy Kid",
+    "author": "Jeff Kinney",
+    "description": "A humorous look at middle school life.",
+    "rentalPrice": "{\"7\": \"27\", \"14\": \"50\", \"21\": \"57\", \"28\": \"95\"}",
+    "category": "Children",
+    "quantity": "10",
+    "publicationYear": "2021",
+    "edition": "1st"
+  }
+]

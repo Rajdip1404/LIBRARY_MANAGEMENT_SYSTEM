@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { toggleReadBookPopup } from "../store/slices/popUp.slice";
+import { toggleReadBookPopup } from "../store/slices/popup.slice";
 
 const ReadBookPopup = ({ book }) => {
   const dispatch = useDispatch();
@@ -30,7 +30,7 @@ const ReadBookPopup = ({ book }) => {
               <img
                 src={book.bookImage?.url || book.image?.url}
                 alt={book.title}
-                className="w-50 h-60 p-2 object-fit border rounded shadow"
+                className="w-60 h-60 p-2 object-fit border rounded shadow"
               />
             </div>
 

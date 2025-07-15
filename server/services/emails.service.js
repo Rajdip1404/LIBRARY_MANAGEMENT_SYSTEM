@@ -26,7 +26,10 @@ export const sendVerificationEmail = async (email, verificationCode) => {
 export const sendWelcomeEmail = async (email, name) => {
   const recipient = [{ email }];
   const subject = `Welcome ${name} to the family!`;
-  const html = WELCOME_EMAIL_TEMPLATE.replace("{name}", name);
+  const html = WELCOME_EMAIL_TEMPLATE.replace("{name}", name).replace(
+    "{dashboardURL}",
+    `${process.env.CLIENT_URL}/`
+  );
   const category = "Welcome";
 
   try {

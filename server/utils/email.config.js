@@ -16,7 +16,7 @@ const transporter = nodemailer.createTransport({
 export const sendEmail = async (to, category, subject, htmlContent) => {
   try {
     const mailOptions = {
-      from: `"Bookies" <${process.env.GOOGLE_APP_USER}>`,
+      from: `"LibraFlow Team" <${process.env.GOOGLE_APP_USER}>`,
       to,
       subject: `${category} : ${subject}`,
       html: htmlContent,

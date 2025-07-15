@@ -44,12 +44,12 @@ const Login = () => {
         {/* left side  */}
         <div className="w-full md:w-1/2 flex items-center justify-center bg-white p-8 relative">
           <div className="max-w-sm w-full">
-            <div className="flex justify-center mb-12">
+            <div className="flex justify-center mb-8">
               <div className="rounder-full flex items-center justify-center">
                 <img src={logo} alt="logo" className="h-24 w-auto" />
               </div>
             </div>
-            <h1 className="text-4xl font-medium text-center mb-12 overflow-hidden">
+            <h1 className="text-4xl font-medium text-center mb-8 overflow-hidden">
               Welcome Back
             </h1>
             <p className="text-gray-700 text-center mb-12">
@@ -108,7 +108,7 @@ const Login = () => {
               <img
                 src={logo_with_title}
                 alt="logo"
-                className="mb-12 h-44 w-auto"
+                className="m-6 h-44 w-auto"
               />
             </div>
             <p className="text-gray-300 text-center mb-12">

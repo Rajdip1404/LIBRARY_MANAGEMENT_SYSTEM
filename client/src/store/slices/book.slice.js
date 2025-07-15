@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { toggleAddBookPopup } from "./popUp.slice";
 
 const API_URL = import.meta.env.VITE_API_BASE_URL;
 
@@ -89,7 +88,7 @@ export const fetchAllBooks = () => async (dispatch) => {
     });
     dispatch(bookSlice.actions.fetchBooksSuccess(response.data.books));
   } catch (error) {
-    console.log(error)
+    console.log(error);
     dispatch(
       bookSlice.actions.fetchBooksFailure(
         error.response ? error.response.data.message : "Network Error"
@@ -112,7 +111,6 @@ export const addBook = (bookData) => async (dispatch) => {
       }
     );
     dispatch(bookSlice.actions.addBookSuccess(response.data.message));
-    dispatch(toggleAddBookPopup());
   } catch (error) {
     dispatch(
       bookSlice.actions.addBookFailure(
@@ -150,7 +148,7 @@ export const updateBook = (bookId, bookData) => async (dispatch) => {
       {
         withCredentials: true,
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "multipart/form-data",
         },
       }
     );
@@ -169,4 +167,3 @@ export const resetBookSlice = () => (dispatch) => {
 };
 
 export default bookSlice.reducer;
-

@@ -9,6 +9,7 @@ import {
   sendResetPasswordEmail,
   sendSuccessResetPasswordEmail,
 } from "../services/emails.service.js";
+import {v2 as cloudinary} from "cloudinary";
 
 export const register = catchAsyncErrors(async (req, res, next) => {
   try {
@@ -252,10 +253,11 @@ export const resetPassword = catchAsyncErrors(async (req, res, next) => {
 
 });
 
-export const updatePassword = catchAsyncErrors(async (req, res, next) => {
+export const updateCredentials = catchAsyncErrors(async (req, res, next) => {
   const user = await User.findById(req.user.id).select("+password");
 
   const { currentPassword, newPassword } = req.body;
+
   if (!currentPassword || !newPassword) {
     return next(new ErrorHandler("Please enter all fields", 400));
   }
@@ -265,25 +267,72 @@ export const updatePassword = catchAsyncErrors(async (req, res, next) => {
     return next(new ErrorHandler("Current password is incorrect", 400));
   }
 
-  if(newPassword === currentPassword) {
-    return next(new ErrorHandler("New password cannot be the same as the current password", 400));
+  if (newPassword === currentPassword) {
+    return next(
+      new ErrorHandler(
+        "New password cannot be the same as the current password",
+        400
+      )
+    );
   }
 
-  // if(newPassword !== confirmNewPassword) {
-  //   return next(new ErrorHandler("Passwords not same, please confirm your password correctly", 400));
-  // }
-
-  if(newPassword.length < 6 || newPassword.length > 20) {
-    return next(new ErrorHandler("Password must be between 6 and 20 characters", 400));
+  if (newPassword.length < 6 || newPassword.length > 20) {
+    return next(
+      new ErrorHandler("Password must be between 6 and 20 characters", 400)
+    );
   }
 
+  // Update password
   const hashedPassword = await bcrypt.hash(newPassword, 10);
   user.password = hashedPassword;
+
+  // Handle avatar update
+  if (req.files && req.files.avatar) {
+    const { avatar } = req.files;
+
+    const allowedFormats = [
+      "image/jpeg",
+      "image/png",
+      "image/jpg",
+      "image/webp",
+    ];
+    if (!allowedFormats.includes(avatar.mimetype)) {
+      return next(new ErrorHandler("Please upload a valid image file", 400));
+    }
+
+    // Delete previous avatar from Cloudinary if it exists
+    if (user.avatar && user.avatar.public_id) {
+      await cloudinary.uploader.destroy(user.avatar.public_id);
+    }
+
+    // Upload new avatar
+    const cloudinaryResponse = await cloudinary.uploader.upload(
+      avatar.tempFilePath,
+      {
+        folder: "LIBRARY_MANAGEMENT_SYSTEM_USER_AVATARS",
+      }
+    );
+
+    if (cloudinaryResponse.error) {
+      console.error(
+        "Error uploading image to Cloudinary:",
+        cloudinaryResponse.error
+      );
+      return next(new ErrorHandler("Error uploading image to Cloudinary", 500));
+    }
+
+    user.avatar = {
+      public_id: cloudinaryResponse.public_id,
+      url: cloudinaryResponse.secure_url,
+    };
+  }
+
   await user.save();
 
   res.status(200).json({
     success: true,
-    message: "Password updated successfully",
+    message: "Credentials updated successfully",
+    user,
   });
-
 });
+

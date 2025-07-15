@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { toggleRecordBookPopup } from "./popUp.slice";
+import { toggleRecordBookPopup } from "./popup.slice";
 
 const API_URL = import.meta.env.VITE_API_BASE_URL;
 
@@ -11,7 +11,7 @@ const borrowSlice = createSlice({
     error: null,
     message: null,
     userBorrowedBooks: [],
-    allBorrowedBooks: []
+    allBorrowedBooks: [],
   },
   reducers: {
     fetchUserBorrowedBooksRequest: (state) => {
@@ -103,8 +103,8 @@ const borrowSlice = createSlice({
       state.loading = false;
       state.error = null;
       state.message = null;
-    //   state.userBorrowedBooks = [];
-    //   state.allBorrowedBooks = [];
+      //   state.userBorrowedBooks = [];
+      //   state.allBorrowedBooks = [];
     },
   },
 });
@@ -124,7 +124,11 @@ export const fetchUserBorrowedBooks = () => async (dispatch) => {
       )
     );
   } catch (error) {
-    dispatch(borrowSlice.actions.fetchUserBorrowedBooksFailure(error.response.data.message));
+    dispatch(
+      borrowSlice.actions.fetchUserBorrowedBooksFailure(
+        error.response.data.message
+      )
+    );
   }
 };
 
@@ -143,29 +147,39 @@ export const fetchAllBorrowedBooks = () => async (dispatch) => {
       )
     );
   } catch (error) {
-    dispatch(borrowSlice.actions.fetchAllBorrowedBooksFailure(error.response.data.message));
-  }
-};
-
-
-export const requestBorrowBook = (bookId, email, duration) => async (dispatch) => {
-  dispatch(borrowSlice.actions.requestBorrowBookRequest());
-  try {
-    const response = await axios.post(
-      `${API_URL}/api/borrow/request-borrow-book/${bookId}`,
-      { email, duration },
-      {
-        withCredentials: true,
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
+    dispatch(
+      borrowSlice.actions.fetchAllBorrowedBooksFailure(
+        error.response.data.message
+      )
     );
-    dispatch(borrowSlice.actions.requestBorrowBookSuccess(response.data.message));
-  } catch (error) {
-    dispatch(borrowSlice.actions.requestBorrowBookFailure(error.response.data.message));
   }
 };
+
+export const requestBorrowBook =
+  (bookId, email, duration) => async (dispatch) => {
+    dispatch(borrowSlice.actions.requestBorrowBookRequest());
+    try {
+      const response = await axios.post(
+        `${API_URL}/api/borrow/request-borrow-book/${bookId}`,
+        { email, duration },
+        {
+          withCredentials: true,
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      dispatch(
+        borrowSlice.actions.requestBorrowBookSuccess(response.data.message)
+      );
+    } catch (error) {
+      dispatch(
+        borrowSlice.actions.requestBorrowBookFailure(
+          error.response.data.message
+        )
+      );
+    }
+  };
 
 export const confirmBorrowBook = (borrowId) => async (dispatch) => {
   dispatch(borrowSlice.actions.confirmBorrowBookRequest());
@@ -189,25 +203,27 @@ export const confirmBorrowBook = (borrowId) => async (dispatch) => {
   }
 };
 
-
-export const recordBorrowedBooks = (bookId, email, duration) => async (dispatch) => {  
-  dispatch(borrowSlice.actions.recordBookRequest());
-  try {
-    const response = await axios.post(
-      `${API_URL}/api/borrow/record-borrowed-books/${bookId}`,
-      { email, duration },
-      {
-        withCredentials: true,
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
-    dispatch(borrowSlice.actions.recordBookSuccess(response.data.message));
-  } catch (error) {
-    dispatch(borrowSlice.actions.recordBookFailure(error.response.data.message));
-  }
-};
+export const recordBorrowedBooks =
+  (bookId, email, duration) => async (dispatch) => {
+    dispatch(borrowSlice.actions.recordBookRequest());
+    try {
+      const response = await axios.post(
+        `${API_URL}/api/borrow/record-borrowed-books/${bookId}`,
+        { email, duration },
+        {
+          withCredentials: true,
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      dispatch(borrowSlice.actions.recordBookSuccess(response.data.message));
+    } catch (error) {
+      dispatch(
+        borrowSlice.actions.recordBookFailure(error.response.data.message)
+      );
+    }
+  };
 
 export const returnBorrowedBook = (email, bookId) => async (dispatch) => {
   dispatch(borrowSlice.actions.returnBorrowedBookRequest());
@@ -222,13 +238,17 @@ export const returnBorrowedBook = (email, bookId) => async (dispatch) => {
         },
       }
     );
-    dispatch(borrowSlice.actions.returnBorrowedBookSuccess(response.data.message));
+    dispatch(
+      borrowSlice.actions.returnBorrowedBookSuccess(response.data.message)
+    );
     console.log(response);
     dispatch(toggleRecordBookPopup());
     dispatch(fetchAllBorrowedBooks());
   } catch (error) {
     console.log(error);
-    dispatch(borrowSlice.actions.returnBorrowedBookFailure(error.response.data.message));
+    dispatch(
+      borrowSlice.actions.returnBorrowedBookFailure(error.response.data.message)
+    );
   }
 };
 
@@ -237,4 +257,3 @@ export const resetBorrowSlice = () => (dispatch) => {
 };
 
 export default borrowSlice.reducer;
-
