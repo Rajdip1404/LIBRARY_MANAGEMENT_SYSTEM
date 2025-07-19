@@ -50,7 +50,7 @@ Here are some glimpses of the Library Management System in action across all use
 | ![View Book Popup](https://github.com/Rajdip1404/LIBRARY_MANAGEMENT_SYSTEM/blob/c4ca0e636aaa00a38d43408d3308837efcaef74b/images/view-book-popup.png)                                       | **Read/View Book** – Read-only book information.                                                    |
 | ![Delete Book Popup](https://github.com/Rajdip1404/LIBRARY_MANAGEMENT_SYSTEM/blob/c4ca0e636aaa00a38d43408d3308837efcaef74b/images/delete-book-popup.png)                                   | **Delete Book** – Confirm and delete a book record.                                                 |
 | ![Requested Books](https://github.com/Rajdip1404/LIBRARY_MANAGEMENT_SYSTEM/blob/c4ca0e636aaa00a38d43408d3308837efcaef74b/images/requested-books-admin-view.png)                            | **Requested Books** – Admin and Librarian can see the requested books by users and can confirm them |
-| ![Catalog for Returned Books](https://github.com/Rajdip1404/LIBRARY_MANAGEMENT_SYSTEM/blob/c4ca0e636aaa00a38d43408d3308837efcaef74b/images/catalog-section-for-returned-books.png)         | **Returned Books** – Admin and Librarian can see the overall returned books by the users.           |
+| ![Catalog for Returned Books](https://github.com/Rajdip1404/LIBRARY_MANAGEMENT_SYSTEM/blob/4476ab8da15932855f20894a7d5114d782d06127/images/catalog-section-for-returned-books.png)         | **Returned Books** – Admin and Librarian can see the overall returned books by the users.           |
 | ![Catalog for Non returned Books](https://github.com/Rajdip1404/LIBRARY_MANAGEMENT_SYSTEM/blob/c4ca0e636aaa00a38d43408d3308837efcaef74b/images/catalog-section-for-non-returned-books.png) | **Non Returned Books** – Admin and Librarian can see all of the non returned books by the users     |
 
 ---
@@ -70,7 +70,7 @@ Here are some glimpses of the Library Management System in action across all use
 
 | Section                                                                                                                                                  | Description                                                              |
 | -------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| ![Librarian Dashboard](https://github.com/Rajdip1404/LIBRARY_MANAGEMENT_SYSTEM/blob/c4ca0e636aaa00a38d43408d3308837efcaef74b/images/admin-dashboard.png) | **Librarian Dashboard** – Charts and status tracking for borrowed books. |
+| ![Librarian Dashboard](https://github.com/Rajdip1404/LIBRARY_MANAGEMENT_SYSTEM/blob/4476ab8da15932855f20894a7d5114d782d06127/images/Librarian-Dashboard.png) | **Librarian Dashboard** – Charts and status tracking for borrowed books. |
 
 ---
 

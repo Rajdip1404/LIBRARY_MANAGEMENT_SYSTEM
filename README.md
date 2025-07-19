@@ -240,11 +240,3 @@ EMAIL_PASS=your_email_password
 ```
 
 ---
-
-## 📝 Based on README best practices
-
-Structure inspired by standard README templates outlining project, installation, usage, folder structure and tech stack ([drupal.org](https://www.drupal.org/docs/develop/managing-a-drupalorg-theme-module-or-distribution-project/documenting-your-project/readmemd-template?utm_source=chatgpt.com "README.md template | Documenting your project - Drupal"), [medium.com](https://medium.com/%40galanipriyanshu/building-a-library-management-system-with-mern-stack-a-case-study-of-the-summer-internship-project-07ec0c300d0f?utm_source=chatgpt.com "Building a Library Management System with MERN Stack - Medium"), [cs.purdue.edu](https://www.cs.purdue.edu/homes/roopsha/papers/semcluster_draft.pdf?utm_source=chatgpt.com "[PDF] SemCluster: Clustering of Programming Assignments based on ..."), [github.com](https://github.com/topics/library-management-system?utm_source=chatgpt.com "library-management-system · GitHub Topics"), [arxiv.org](https://www.arxiv.org/list/cs.CV/2024-02?show=2000&skip=700&utm_source=chatgpt.com "Computer Vision and Pattern Recognition Feb 2024 - arXiv")).
-
----
-
-Let me know if you'd like any additional sections (e.g. testing, contributors, license), or adjustments for tone (e.g. more concise). Once you're ready, I’ll provide the final ready-to-drop‑into `README.md`.
