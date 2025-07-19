@@ -207,14 +207,19 @@ The React application should open at `http://localhost:3000` and backend server 
 
 ![signup_page](https://github.com/Rajdip1404/LIBRARY_MANAGEMENT_SYSTEM/blob/fb152eed45a5f077a00bf5b43125218914308553/images/signup.png)
 
+---
+
 - **Email Verification Template** – After signup a email has been sent to the user to verify that email
 
 ![email-verification-mail](https://github.com/Rajdip1404/LIBRARY_MANAGEMENT_SYSTEM/blob/fb152eed45a5f077a00bf5b43125218914308553/images/email-verification-mail.png)
+
+---
 
 - **Admin Dashboard** – An interactive admin dashboard with charts
 
 ![signup_page](https://github.com/Rajdip1404/LIBRARY_MANAGEMENT_SYSTEM/blob/fb152eed45a5f077a00bf5b43125218914308553/images/admin-dashboard.png)
 
+---
 
 📷 View full screenshots [Click here](Screenshots.md)
 

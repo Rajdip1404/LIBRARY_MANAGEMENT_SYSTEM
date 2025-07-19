@@ -43,6 +43,11 @@ const Header = () => {
                   (Admin)
                 </span>
               )}
+              {user && user?.role === "Librarian" && (
+                <span className="text-blue-500 text-xs sm:text-sm lg:text-base ml-1">
+                  (Librarian)
+                </span>
+              )}
             </span>
             <span className="text-xs sm:text-sm lg:text-base">
               {user && user?.email}
