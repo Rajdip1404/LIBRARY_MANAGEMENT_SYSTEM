@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { updateBook } from "./book.slice.js";
 
 const popupSlice = createSlice({
     name: "popup",
