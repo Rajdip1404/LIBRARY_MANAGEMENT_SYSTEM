@@ -6,9 +6,9 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   envPrefix: "VITE_",
-  build: {
-    rollupOptions: {
-      external: ["mongoose"],
-    },
-  },
+  // build: {
+  //   rollupOptions: {
+  //     external: ["mongoose"],
+  //   },
+  // },
 });
