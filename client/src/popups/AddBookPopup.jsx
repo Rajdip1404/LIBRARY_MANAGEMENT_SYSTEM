@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addBook, fetchAllBooks } from "../store/slices/book.slice";
 import { toggleAddBookPopup } from "../store/slices/popup.slice.js";
-import { bookCategories } from "../../../server/models/book.model.js";
+import { bookCategories } from "../utils/bookCategory.js";
 
 const AddBookPopup = () => {
   const dispatch = useDispatch();
