@@ -115,14 +115,12 @@ const BookManagement = () => {
 
   useEffect(() => {
     if (message) {
-      toast.success(message);
       dispatch(resetBookSlice()); // Reset after handling
     }
   }, [message, dispatch]);
 
   useEffect(() => {
     if (borrowMessage) {
-      toast.success(borrowMessage);
       dispatch(resetBorrowSlice());
     }
   }, [borrowMessage, dispatch]);
@@ -164,7 +162,7 @@ const BookManagement = () => {
 
   return (
     <>
-      <main className="relative flex-1">
+      <main className="relative flex-1 p-2">
         <Header />
         <header className="flex flex-col gap-4 md:flex-row md:justify-between md:items-center px-6 py-4">
           <h2 className="text-xl font-medium md:text-2xl md:font-semibold">
@@ -236,7 +234,7 @@ const BookManagement = () => {
           {books && books.length > 0 ? (
             <div className="mt-6 bg-white rounded-md shadow-lg">
               <table className="min-w-full border-collapse p-4">
-                <thead>
+                <thead className="bg-gray-200 text-lg sticky top-0">
                   <tr>
                     <th className="px-4 py-2 text-left">ID</th>
                     <th className="px-4 py-2 text-left">Name</th>
@@ -271,11 +269,11 @@ const BookManagement = () => {
                   {searchedBooks.map((book, index) => (
                     <tr
                       key={book._id}
-                      className={
+                      className={`transition-colors duration-200 ${
                         (index + 1) % 2 === 0
-                          ? "bg-gray-50 hover:bg-gray-100"
-                          : "hover:bg-gray-100"
-                      }
+                          ? "bg-gray-100 hover:bg-gray-200"
+                          : "hover:bg-gray-200"
+                      } font-semibold`}
                     >
                       <td className="px-4 py-2">{index + 1}</td>
                       <td className="px-4 py-2 max-w-[200px] min-w-[100px] truncate whitespace-nowrap overflow-hidde">

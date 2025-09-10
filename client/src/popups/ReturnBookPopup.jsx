@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { returnBorrowedBook } from "../store/slices/borrow.slice";
 import { toggleReturnBookPopup } from "../store/slices/popup.slice";
 
-const ReturnBookPopup = ({ bookId, email }) => {
+const ReturnBookPopup = ({ bookId, email, fine }) => {
   const dispatch = useDispatch();
   const handleReturnBook = (e) => {
     e.preventDefault();
@@ -27,6 +27,19 @@ const ReturnBookPopup = ({ bookId, email }) => {
                 className="border border-gray-300 rounded-lg px-4 py-2 w-full"
                 placeholder="Enter User Email"
                 required={true}
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block text-gray-700 font-semibold mb-2">
+                Total Fine (if any)
+              </label>
+              <input
+                type="text"
+                defaultValue={fine}
+                className="border border-gray-300 rounded-lg px-4 py-2 w-full"
+                placeholder="Enter total fine"
+                required={true}
+                readOnly={true}
               />
             </div>
             <div className="flex justify-end space-x-4 mt-4">

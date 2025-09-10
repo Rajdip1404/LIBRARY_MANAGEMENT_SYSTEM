@@ -4,6 +4,7 @@ import { updateBook } from "./book.slice";
 const popupSlice = createSlice({
     name: "popup",
     initialState: {
+        anonymousSettingPopup: false,
         settingPopup: false,
         addBookPopup: false,
         borrowBookPopup: false,
@@ -16,6 +17,9 @@ const popupSlice = createSlice({
         addNewLibrarianPopup: false
     },
     reducers: {
+        toggleAnonymousSettingPopup: (state) => {
+            state.anonymousSettingPopup = !state.anonymousSettingPopup;
+        },
         toggleSettingPopup: (state) => {
             state.settingPopup = !state.settingPopup;
         },
@@ -47,6 +51,7 @@ const popupSlice = createSlice({
             state.addNewLibrarianPopup = !state.addNewLibrarianPopup;
         },
         closeAllPopup: (state) => {
+            state.anonymousSettingPopup = false;
             state.settingPopup = false;
             state.addBookPopup = false;
             state.borrowBookPopup = false;
@@ -61,6 +66,7 @@ const popupSlice = createSlice({
 });
 
 export const {
+    toggleAnonymousSettingPopup,
     toggleSettingPopup,
     toggleAddBookPopup,
     toggleBorrowBookPopup,

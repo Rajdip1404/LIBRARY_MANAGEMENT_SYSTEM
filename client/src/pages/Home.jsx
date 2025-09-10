@@ -6,6 +6,7 @@ import Sidebar from "../layout/Sidebar.jsx";
 import UserDashboard from "../components/UserDashboard.jsx";
 import AdminDashboard from "../components/AdminDashboard.jsx";
 import LibrarianDashboard from "../components/LibrarianDashboard.jsx";
+import AnonymousUserDashboard from "../components/AnonymousUserDashboard.jsx";
 import BookManagement from "../components/BookManagement.jsx";
 import Catalog from "../components/Catalog.jsx";
 import Users from "../components/Users.jsx";
@@ -17,27 +18,38 @@ const Home = () => {
   const [selectedComponent, setSelectedComponent] = useState("dashboard");
 
   const { user, isAuthenticated } = useSelector((state) => state.auth);
-  
-  // Redirect to login if not authenticated
-  if (!isAuthenticated) {
-    return <Navigate to="/login" />;
-  }
 
-  // Select component to render
   const renderComponent = () => {
     switch (selectedComponent) {
       case "dashboard":
-        return user?.role === "User" ? <UserDashboard /> : user?.role === "Admin" ? <AdminDashboard /> : <LibrarianDashboard />;
+        if (!isAuthenticated || !user) return <AnonymousUserDashboard />;
+        if (user.role === "User") return <UserDashboard />;
+        if (user.role === "Admin") return <AdminDashboard />;
+        if (user.role === "Librarian") return <LibrarianDashboard />;
+        return <AnonymousUserDashboard />;
+
       case "Books":
-        return <BookManagement />;
+        return <BookManagement />; // ✅ accessible to all, protections inside
+
       case "Catalog":
-        return (user?.role === "Admin" || user?.role === "Librarian") ? <Catalog /> : <UserDashboard />;
+        return user?.role === "Admin" || user?.role === "Librarian" ? (
+          <Catalog />
+        ) : (
+          <UserDashboard />
+        );
+
       case "Users":
         return user?.role === "Admin" ? <Users /> : <UserDashboard />;
+
       case "my-borrowed-books":
         return <MyBorrowedBooks />;
+
       default:
-        return user?.role === "User" ? <UserDashboard /> : <AdminDashboard />;
+        if (!isAuthenticated || !user) return <AnonymousUserDashboard />;
+        if (user.role === "User") return <UserDashboard />;
+        if (user.role === "Admin") return <AdminDashboard />;
+        if (user.role === "Librarian") return <LibrarianDashboard />;
+        return <AnonymousUserDashboard />;
     }
   };
 

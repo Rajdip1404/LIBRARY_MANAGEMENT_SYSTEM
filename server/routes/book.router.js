@@ -12,6 +12,6 @@ router.delete(
   deleteBook
 );
 router.put("/admin/update-book/:bookId", isAuthenticated, isLibrarianOrAdmin, updateBook);
-router.get("/get-all-books", isAuthenticated, getAllBook);
+router.get("/get-all-books", getAllBook);
 
 export default router;

@@ -9,6 +9,7 @@ const userSlice = createSlice({
         users: [],
         admins: [],
         librarians: [],
+        message: null,
         loading: false,
     },
     reducers: {
@@ -16,8 +17,9 @@ const userSlice = createSlice({
             state.loading = true;
         },
         fetchAllUsersSuccess: (state, action) => {
+            state.message = action.payload.message
             state.loading = false;
-            state.users = action.payload;
+            state.users = action.payload.users;
         },
         fetchAllUsersFailure: (state, action) => {
             state.loading = false;
@@ -27,8 +29,9 @@ const userSlice = createSlice({
             state.loading = true;
         },
         fetchAllAdminsSuccess: (state, action) => {
+            state.message = action.payload.message;
             state.loading = false;
-            state.admins = action.payload;
+            state.admins = action.payload.admins;
         },
         fetchAllAdminsFailure: (state, action) => {
             state.loading = false;
@@ -38,8 +41,9 @@ const userSlice = createSlice({
             state.loading = true;
         },
         fetchAllLibrariansSuccess: (state, action) => {
+            state.message = action.payload.message;
             state.loading = false;
-            state.librarians = action.payload;
+            state.librarians = action.payload.librarians;
         },
         fetchAllLibrariansFailure: (state, action) => {
             state.loading = false;
@@ -49,6 +53,7 @@ const userSlice = createSlice({
             state.loading = true;
         },
         addNewAdminSuccess: (state) => {
+            state.message = "New admin added successfully";
             state.loading = false;
         },
         addNewAdminFailure: (state) => {
@@ -58,6 +63,7 @@ const userSlice = createSlice({
             state.loading = true;
         },
         addNewLibrarianSuccess: (state) => {
+            state.message = "New librarian added successfully";
             state.loading = false;
         },
         addNewLibrarianFailure: (state) => {
@@ -72,7 +78,7 @@ export const fetchAllUsers = () => async (dispatch) => {
         const response = await axios.get(`${API_URL}/api/user/get-all-users`, {
           withCredentials: true,
         });
-        dispatch(userSlice.actions.fetchAllUsersSuccess(response.data.users));
+        dispatch(userSlice.actions.fetchAllUsersSuccess(response.data));
     } catch (error) {
         dispatch(userSlice.actions.fetchAllUsersFailure(error.response.data.message));
     }
@@ -84,7 +90,7 @@ export const fetchAllAdmins = () => async (dispatch) => {
         const response = await axios.get(`${API_URL}/api/user/get-all-admins`, {
           withCredentials: true,
         });
-        dispatch(userSlice.actions.fetchAllAdminsSuccess(response.data.admins));
+        dispatch(userSlice.actions.fetchAllAdminsSuccess(response.data));
     } catch (error) {
         dispatch(userSlice.actions.fetchAllAdminsFailure(error.response.data.message));
     }
@@ -96,7 +102,7 @@ export const fetchAllLibrarians = () => async (dispatch) => {
         const response = await axios.get(`${API_URL}/api/user/get-all-librarians`, {
           withCredentials: true,
         });
-        dispatch(userSlice.actions.fetchAllLibrariansSuccess(response.data.librarians));
+        dispatch(userSlice.actions.fetchAllLibrariansSuccess(response.data));
     } catch (error) {
         dispatch(userSlice.actions.fetchAllLibrariansFailure(error.response.data.message));
     }

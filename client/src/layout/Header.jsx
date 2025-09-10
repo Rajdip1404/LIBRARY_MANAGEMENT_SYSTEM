@@ -3,7 +3,7 @@ import settingIcon from "../assets/setting.png";
 import userIcon from "../assets/user.png";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { toggleSettingPopup } from "../store/slices/popup.slice";
+import { toggleSettingPopup, toggleAnonymousSettingPopup } from "../store/slices/popup.slice";
 
 const Header = () => {
     const dispatch = useDispatch();
@@ -33,27 +33,46 @@ const Header = () => {
     <>
       <header className="z-10 top-0 bg-white w-full py-4 px-6 left-0 shadow-md flex justify-between items-center">
         {/* left side */}
-        <div className="flex items-center gap-2">
-          <img src={userIcon} alt="userIcon" className="w-8 h-8" />
-          <div className="ml-2 flex flex-col">
-            <span className="text-sm font-medium sm:text-lg lg:text-xl sm:font-semibold text-black">
-              {user && user?.name}{" "}
-              {user && user?.role === "Admin" && (
-                <span className="text-blue-500 text-xs sm:text-sm lg:text-base ml-1">
-                  (Admin)
-                </span>
-              )}
-              {user && user?.role === "Librarian" && (
-                <span className="text-blue-500 text-xs sm:text-sm lg:text-base ml-1">
-                  (Librarian)
-                </span>
-              )}
-            </span>
-            <span className="text-xs sm:text-sm lg:text-base">
-              {user && user?.email}
-            </span>
+        {user ? (
+          <div className="flex items-center gap-2">
+            <img
+              src={user && user.avatar?.url}
+              alt="userIcon"
+              className="w-18 h-18 rounded-full"
+            />
+            <div className="ml-2 flex flex-col">
+              <span className="text-sm font-medium sm:text-lg lg:text-xl sm:font-semibold text-black">
+                {user && user?.name}{" "}
+                {user && user?.role === "Admin" && (
+                  <span className="text-blue-500 text-xs sm:text-sm lg:text-base ml-1">
+                    (Admin)
+                  </span>
+                )}
+                {user && user?.role === "Librarian" && (
+                  <span className="text-blue-500 text-xs sm:text-sm lg:text-base ml-1">
+                    (Librarian)
+                  </span>
+                )}
+              </span>
+              <span className="text-xs sm:text-sm lg:text-base">
+                {user && user?.email}
+              </span>
+            </div>
           </div>
-        </div>
+        ) : (
+          <div className="flex items-center gap-2">
+            <img
+              src={userIcon}
+              alt="userIcon"
+              className="w-12 h-12 rounded-full"
+            />
+            <div className="ml-2 flex flex-col">
+              <span className="text-sm font-medium sm:text-lg lg:text-xl sm:font-semibold text-black">
+                Anonymous User
+              </span>
+            </div>
+          </div>
+        )}
         {/* right side */}
         <div className="hidden lg:flex items-center gap-2">
           <div className="flex flex-col text-sm lg:text-base items-end font-semibold">
@@ -66,7 +85,11 @@ const Header = () => {
             alt="settingIcon"
             className="w-8 h-8 cursor-pointer"
             onClick={() => {
-              dispatch(toggleSettingPopup())
+              if (user) {
+                dispatch(toggleSettingPopup());
+              } else {
+                dispatch(toggleAnonymousSettingPopup());
+              }
             }}
           />
         </div>

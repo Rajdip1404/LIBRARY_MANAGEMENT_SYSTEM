@@ -1,7 +1,7 @@
 import cron from "node-cron";
 import Borrow from "./models/borrow";
 import User from "./models/user";
-import { sendDueDateReminderEmail } from "./utils/email";
+import { sendDueDateReminderEmail } from "../utils/emailTemplates.js";
 
 export const notifyUser = async () => {
   cron.schedule("* * * * */30", async () => {

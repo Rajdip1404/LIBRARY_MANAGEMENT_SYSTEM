@@ -16,11 +16,13 @@ import { fetchAllBorrowedBooks, fetchUserBorrowedBooks } from "./store/slices/bo
 
 const App = () => {
   const { user, isAuthenticated } = useSelector((state) => state.auth);
+  const {loading} = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getUser());
   }, [dispatch]); // Only runs once on initial mount
+
 
   useEffect(() => {
     if (isAuthenticated && user?.role === "Admin") {
@@ -30,6 +32,9 @@ const App = () => {
       dispatch(fetchAllBorrowedBooks());
       dispatch(fetchAllBooks());
     }
+  }, [isAuthenticated, user, dispatch]); // Runs only when these change
+
+  useEffect(() => {
     if (isAuthenticated && user?.role === "Librarian") {
       dispatch(fetchAllBooks());
       dispatch(fetchAllBorrowedBooks());
@@ -38,7 +43,31 @@ const App = () => {
       dispatch(fetchAllBooks());
       dispatch(fetchUserBorrowedBooks());
     }
+    if(!isAuthenticated){
+      dispatch(fetchAllBooks());
+    }
   }, [isAuthenticated, user, dispatch]); // Runs only when these change
+
+  // useEffect(() => {
+  //   if (isAuthenticated && user?.role === "Admin") {
+  //     dispatch(fetchAllUsers());
+  //     dispatch(fetchAllAdmins());
+  //     dispatch(fetchAllLibrarians());
+  //     dispatch(fetchAllBorrowedBooks());
+  //     dispatch(fetchAllBooks());
+  //   }
+  //   if (isAuthenticated && user?.role === "Librarian") {
+  //     dispatch(fetchAllBooks());
+  //     dispatch(fetchAllBorrowedBooks());
+  //   }
+  //   if (isAuthenticated && user?.role === "User") {
+  //     dispatch(fetchAllBooks());
+  //     dispatch(fetchUserBorrowedBooks());
+  //   }
+  //   if(!isAuthenticated){
+  //     dispatch(fetchAllBooks());
+  //   }
+  // }, [isAuthenticated, user, dispatch]); // Runs only when these change
 
   return (
     <>

@@ -5,6 +5,7 @@ import Header from "../layout/Header";
 import { BookA } from "lucide-react";
 import { toggleReadBookPopup } from "../store/slices/popup.slice";
 import ReadBookPopup from "../popups/ReadBookPopup";
+import {calculateFine} from "../utils/fineCalculator.js";
 
 const MyBorrowedBooks = () => {
   const dispatch = useDispatch();
@@ -38,7 +39,7 @@ const MyBorrowedBooks = () => {
       date.getMinutes()
     ).padStart(2, "0")}:${String(date.getSeconds()).padStart(2, "0")}`;
 
-    const formattedDateTime = `${formattedDate} ${formattedTime}`;
+    const formattedDateTime = `${formattedDate} | ${formattedTime}`;
     return formattedDateTime;
   };
 
@@ -97,6 +98,9 @@ const MyBorrowedBooks = () => {
                     <th className="px-4 py-2 text-left">Due Date</th>
                     <th className="px-4 py-2 text-left">Returned</th>
                     <th className="px-4 py-2 text-left">View</th>
+                    {filter === "nonReturned" && (
+                      <th className="px-4 py-2 text-left">Fine</th>
+                    )}
                   </tr>
                 </thead>
 
@@ -124,6 +128,11 @@ const MyBorrowedBooks = () => {
                         />
                         View
                       </td>
+                      {filter === "nonReturned" && (
+                        <td className="px-4 py-2 text-red-600 font-semibold">
+                          ₹ {calculateFine(book.dueDate)}
+                        </td>
+                      )}
                     </tr>
                   ))}
                 </tbody>

@@ -30,16 +30,6 @@
     "edition": "1st"
   },
   {
-    "title": "Foundation",
-    "author": "Isaac Asimov",
-    "description": "A mathematician predicts the fall of civilization.",
-    "rentalPrice": "{\"7\": \"19\", \"14\": \"45\", \"21\": \"56\", \"28\": \"80\"}",
-    "category": "Science Fiction",
-    "quantity": "10",
-    "publicationYear": "1941",
-    "edition": "1st"
-  },
-  {
     "title": "Snow Crash",
     "author": "Neal Stephenson",
     "description": "A futuristic cyber adventure in a virtual world.",

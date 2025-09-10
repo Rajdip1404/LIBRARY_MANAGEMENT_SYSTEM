@@ -74,7 +74,7 @@ const Users = () => {
         {roleUsers.length > 0 ? (
           <div className="overflow-x-auto bg-white rounded-md shadow-lg">
             <table className="min-w-[600px] w-full border-collapse">
-              <thead className="bg-gray-200">
+              <thead className="bg-gray-200 text-lg sticky top-0">
                 <tr>
                   <th className="px-4 py-2 text-left">ID</th>
                   <th className="px-4 py-2 text-left">Name</th>
@@ -90,7 +90,11 @@ const Users = () => {
                 {roleUsers.map((user, index) => (
                   <tr
                     key={user._id}
-                    className={index % 2 === 0 ? "bg-white" : "bg-gray-100"}
+                    className={`transition-colors duration-200 ${
+                      (index + 1) % 2 === 0
+                        ? "bg-gray-100 hover:bg-gray-200"
+                        : "hover:bg-gray-200"
+                    } font-semibold`}
                   >
                     <td className="px-4 py-2">{index + 1}</td>
                     <td className="px-4 py-2">{user.name}</td>

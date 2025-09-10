@@ -93,6 +93,20 @@ export const requestBorrowBook = catchAsyncErrors(async (req, res, next) => {
   if (book.quantity === 0)
     return next(new ErrorHandler("Book is not available", 400));
 
+  const isAnyDueDateCrossed = user.borrowedBooks.some(
+    (borrow) =>
+      borrow.dueDate &&
+      borrow.dueDate.getTime() < new Date().getTime() &&
+      !borrow.returned
+  );
+  if (isAnyDueDateCrossed)
+    return next(
+      new ErrorHandler(
+        "Please clear the previous due books before requesting a new book",
+        400
+      )
+    );
+
   const isAlreadyBorrowed = user.borrowedBooks.find(
     (borrow) => borrow.book?.toString() === bookId && !borrow.returned
   );
@@ -141,47 +155,7 @@ export const requestBorrowBook = catchAsyncErrors(async (req, res, next) => {
 });
 
 
-// export const confirmBorrowRequest = catchAsyncErrors(async (req, res, next) => {
-//   const { borrowId } = req.params;
 
-//   const borrowRecord = await Borrow.findById(borrowId);
-
-//   if (!borrowRecord) {
-//     return next(new ErrorHandler("Borrow request not found", 404));
-//   }
-
-//   if (borrowRecord.status === "borrowed") {
-//     return next(new ErrorHandler("This book is already borrowed", 400));
-//   }
-
-//   if (borrowRecord.status === "returned") {
-//     return next(new ErrorHandler("This book is already returned", 400));
-//   }
-
-//   borrowRecord.borrowDate = new Date();
-//   borrowRecord.dueDate = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
-//   borrowRecord.status = "borrowed";
-
-//   await borrowRecord.save();
-
-//   const user = await User.findById(borrowRecord.user.id);
-//   const book = await Book.findById(borrowRecord.book);
-
-//   user.borrowedBooks.push({
-//     bookId: book._id,
-//     returned: false,
-//     bookTitle: book.title,
-//     borrowDate: new Date(),
-//     dueDate: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
-//   });
-//   await user.save();
-
-//   res.status(200).json({
-//     success: true,
-//     message: "Book Borrowed to user successfully",
-//     borrow: borrowRecord,
-//   });
-// });
 
 export const confirmBorrowRequest = catchAsyncErrors(async (req, res, next) => {
   const { borrowId } = req.params;

@@ -12,6 +12,7 @@ export const getAllUsers = catchAsyncErrors(async (req, res, next) => {
     });
     res.status(200).json({
         success: true,
+        message: "Users fetched successfully",
         users
     });
 });
@@ -23,6 +24,7 @@ export const getAllAdmin = catchAsyncErrors(async (req, res, next) => {
     });
     res.status(200).json({
         success: true,
+        message: "Admins fetched successfully",
         admins
     });
 });
@@ -34,6 +36,7 @@ export const getAllLibrarians = catchAsyncErrors(async (req, res, next) => {
     });
     res.status(200).json({
         success: true,
+        message: "Librarians fetched successfully",
         librarians
     });
 });

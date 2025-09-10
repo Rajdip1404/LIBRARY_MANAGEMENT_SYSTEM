@@ -27,7 +27,7 @@ const borrowSchema = new mongoose.Schema({
   },
   borrowDate: {
     type: Date,
-    default: Date.now,
+    default: null,
   },
   duration: {
     type: String,

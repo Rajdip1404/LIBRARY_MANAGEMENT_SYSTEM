@@ -18,6 +18,7 @@ import Header from "../layout/Header.jsx";
 import { toast } from "react-toastify";
 import { EyeIcon } from "lucide-react";
 import ReadBookPopup from "../popups/ReadBookPopup.jsx";
+import {calculateFine} from "../utils/fineCalculator.js";
 
 const Catalog = () => {
   const dispatch = useDispatch();
@@ -64,10 +65,12 @@ const Catalog = () => {
 
   const [email, setEmail] = useState("");
   const [borrowedBookId, setBorrowedBookId] = useState("");
+  const [fine, setFine] = useState(0);
 
-  const openReturnBookPopup = (bookId, email) => {
+  const openReturnBookPopup = (bookId, email, dueDate) => {
     setBorrowedBookId(bookId);
     setEmail(email);
+    setFine(calculateFine(dueDate));
     dispatch(toggleReturnBookPopup());
   };
 
@@ -154,13 +157,13 @@ const Catalog = () => {
         <div className="w-full overflow-x-auto max-h-[80vh] overflow-y-auto rounded-md">
           {borrowLoading || bookLoading ? (
             <div className="flex justify-center items-center h-[60vh]">
-              <h3 className="text-xl font-semibold">Loading books...</h3>
+              <h3 className="text-xl font-bold">Loading books...</h3>
             </div>
           ) : booksToDisplay && booksToDisplay.length > 0 ? (
             <div className="mt-6 overflow-auto bg-white rounded-md shadow-lg">
               <table className="min-w-full border-collapse p-4">
-                <thead>
-                  <tr className="bg-gray-200">
+                <thead className="bg-gray-200 text-lg sticky top-0 select-none">
+                  <tr>
                     <th className="px-4 py-2 text-left">ID</th>
                     <th className="px-4 py-2 text-left">Username</th>
                     <th className="px-4 py-2 text-left">Email</th>
@@ -178,9 +181,11 @@ const Catalog = () => {
                   {booksToDisplay.map((book, index) => (
                     <tr
                       key={index}
-                      className={`hover:bg-gray-100 transition-colors duration-300 ${
-                        (index + 1) % 2 === 0 ? "bg-gray-50" : ""
-                      }`}
+                      className={`transition-colors duration-200 ${
+                        (index + 1) % 2 === 0
+                          ? "bg-gray-100 hover:bg-gray-200"
+                          : "hover:bg-gray-200"
+                      } font-semibold`}
                     >
                       <td className="px-4 py-2">{index + 1}</td>
                       <td className="px-4 py-2">{book?.user.name}</td>
@@ -190,7 +195,7 @@ const Catalog = () => {
                         {book.dueDate ? formatDate(book.dueDate) : "N/A"}
                       </td>
                       <td className="px-4 py-2">
-                        {formatDate(book.createdAt)}
+                        {formatDate(book.borrowDate) || "N/A"}
                       </td>
                       <td className="px-4 py-2 text-center">
                         {filter === "requested" ? (
@@ -211,7 +216,11 @@ const Catalog = () => {
                             <PiKeyReturnBold
                               className="w-6 h-6 text-red-500 cursor-pointer"
                               onClick={() =>
-                                openReturnBookPopup(book.book, book.user.email)
+                                openReturnBookPopup(
+                                  book.book,
+                                  book.user.email,
+                                  book.dueDate
+                                )
                               }
                             />
                           </div>
@@ -242,7 +251,7 @@ const Catalog = () => {
       </main>
 
       {returnBookPopup && (
-        <ReturnBookPopup bookId={borrowedBookId} email={email} />
+        <ReturnBookPopup bookId={borrowedBookId} email={email} fine={fine} />
       )}
       {readBookPopup && <ReadBookPopup book={readBook} />}
     </>
