@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { toggleRecordBookPopup } from "./popup.slice";
+import { toggleRecordBookPopup } from "./popup.slice.js";
 
 const API_URL = import.meta.env.VITE_API_BASE_URL;
 
