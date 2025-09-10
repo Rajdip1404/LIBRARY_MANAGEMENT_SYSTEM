@@ -8,7 +8,7 @@ import {
 } from "lucide-react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { bookCategories } from "../../../server/models/book.model.js";
+import { bookCategories } from "../utils/bookCategory.js";
 import {
   toggleAddBookPopup,
   toggleReadBookPopup,
