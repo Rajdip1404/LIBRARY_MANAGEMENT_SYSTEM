@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { toggleDeleteBookPopup } from "../store/slices/popUp.slice";
+import { toggleDeleteBookPopup } from "../store/slices/popup.slice";
 import { deleteBook } from "../store/slices/book.slice";
 
 const DeleteBookPopup = ({ bookId }) => {

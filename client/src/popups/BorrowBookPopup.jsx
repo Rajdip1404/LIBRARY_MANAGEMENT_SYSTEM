@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { requestBorrowBook } from "../store/slices/borrow.slice";
-import { toggleBorrowBookPopup } from "../store/slices/popUp.slice";
+import { toggleBorrowBookPopup } from "../store/slices/popup.slice.js";
 
 const BorrowBookPopup = ({ book, email }) => {
   const dispatch = useDispatch();

@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   toggleReadBookPopup,
   toggleReturnBookPopup,
-} from "../store/slices/popup.slice.js";
+} from "../store/slices/popup.slice";
 import { fetchAllBooks, resetBookSlice } from "../store/slices/book.slice";
 import {
   fetchAllBorrowedBooks,
